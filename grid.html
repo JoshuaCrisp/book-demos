@@ -1,0 +1,159 @@
+<html>
+  <head>
+    <title>The Scene Graph</title>
+    <meta name="description" content="Understanding the Scene Graph">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="resources/aframe-no-click-look-controls.min.js"></script>
+    <script src ="resources/gridify-plane.js"></script>
+    <script src ="resources/gridify-buttons.js"></script>
+    <script src ="resources/follow-rotation.js"></script>
+    <script src ="resources/make-primitives.js"></script>
+    <script src ="resources/geometry-button-caller.js"></script>
+    <script src ="resources/material-button-caller.js"></script>
+    <script src ="resources/color-button-caller.js"></script>
+    <script src ="resources/manipulation-button-caller.js"></script>
+    <script src ="resources/visibility-on-x.js"></script>
+    <script src ="resources/model-opacity.js"></script>
+    <script src ="resources/jay-caller.js"></script>
+    <script src ="resources/talk.js"></script>
+    <script src ="resources/look-trigger.js"></script>
+
+  </head>
+
+  <body>
+
+      
+
+    <a-scene id="scene">
+
+        <a-assets>
+            <img id="gridImage" src="assets/grid.png">
+            <img id="gridSquare-white" src="assets/gridSquare.jpg">
+            <img id="gridSquare-red" src="assets/gridSquare-red.jpg">
+            <img id="monitorImage" src="assets/textures/monitor.png">
+            <img id="geo-button-jpg" src="assets/buttons/addGeoButton.jpg">
+            <img id="node-pano-png" src="assets/node-pano.png">
+            <img id="handles-bg-png" src="assets/buttons/handles/handleBG.png">
+            <img id="handle-xu" src="assets/buttons/handles/handle_x_u.png">
+            <img id="handle-xs" src="assets/buttons/handles/handle_x_s.png">
+            <img id="handle-yu" src="assets/buttons/handles/handle_y_u.png">
+            <img id="handle-ys" src="assets/buttons/handles/handle_y_s.png">
+            <img id="handle-zu" src="assets/buttons/handles/handle_z_u.png">
+            <img id="handle-zs" src="assets/buttons/handles/handle_x_s.png">
+            <img id="leather-normal-png" src="assets/leather-normal.png">
+            <img id="brick-normal-png" src="assets/masonry-normal.jpg">
+            <img id="checkers-normal-png" src="assets/checkers-normal.png">
+            <img id="nodeImg" src="assets/node-view.jpg">
+            <img id="nodeImg2" src="assets/node-view2.jpg">
+            <a-asset-item id="desk-gltf" src="assets/models/desk.gltf"></a-asset-item>
+            <a-asset-item id="board-gltf" src="assets/models/board.gltf"></a-asset-item>
+            <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
+            <a-asset-item id="plate-gltf" src="assets/models/plate.gltf"></a-asset-item>
+            <a-asset-item id="filmcamera-obj" src="assets/models/filmcamera.obj"></a-asset-item>
+            <a-asset-item id="filmcamera-mtl" src="assets/models/filmcamera.mtl"></a-asset-item>
+            <audio id = "add" src="assets/audio/speech-add.m4a" preload></audio>
+            <audio id = "end" src="assets/audio/speech-end.m4a" preload></audio>
+            <audio id = "geometry" src="assets/audio/speech-geometry.m4a" preload></audio>
+            <audio id = "manipulation" src="assets/audio/speech-manipulate.m4a" preload></audio>
+            <audio id = "material" src="assets/audio/speech-material.m4a" preload></audio>
+            <audio id = "placement" src="assets/audio/speech-placement.m4a" preload></audio>
+            <audio id = "rotation" src="assets/audio/speech-rotation.m4a" preload></audio>
+            <audio id = "scale" src="assets/audio/speech-scale.m4a" preload></audio>
+            <audio id = "welcome" src="assets/audio/speech-welcome.m4a" preload></audio>
+            
+          </a-assets>
+
+      <a-camera id = "camera"> 
+          <a-plane visibility-on-x color id = "node-portol"  material ="shader:flat; src: #nodeImg"  width = "16" height = "9"  scale = "1.5 1.5 1.5" position = " 0 0 -12" opacity = "0" side = "double"></a-plane>
+
+        <a-cursor cursor-listener
+                  fuse = "true"
+                  fuseTimeOut = "1000"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: red; shader: flat"
+                  raycaster="id: raycaster; far: 100; interval: 1000; objects: .gridify-button, .button-holder">
+
+                  <a-animation begin="click"
+                               easing="ease-in"
+                               attribute="scale" dur="150"
+                               fill="forwards"
+                               from="0.1 0.1 0.1"
+                               to="1 1 1">
+                  </a-animation>
+                  <a-animation begin="cursor-fusing"
+                               easing="linear"
+                               attribute="scale"
+                               delay = "1000"
+                               dur="500"
+                               fill="forwards"
+                               from="1 1 1"
+                               to="0.1 0.1 0.1">
+                  </a-animation>
+
+        </a-cursor>
+
+      </a-camera>
+
+      <a-sky color = "#ffffff"></a-sky>
+      <a-entity id="floor" gridify-plane = "height: 1; width:1; rows:40; columns:40; src: #gridSquare-white;" rotation = "-90 0 0" position = "0 -1 0"></a-entity>
+
+      <a-plane
+                    id = "geo-platform"
+                    class = "button-holder"
+                    src= "#geo-button-jpg"
+                    transparency= "true"
+                    opacity= "1"
+                    position="0, -1, -3"
+                    rotation="-90 0 0"
+                    jay-caller
+                    >
+
+          <a-entity  gridify-buttons = "class: geometry-button; btnCount: 5; btnWidth: 1;  columns: 6; btnHeight: 1; spacing: 0.1; url:assets/buttons/geometryBtns/; imagebase: geometryButton"
+                     make-primitives
+                     visible = "false"
+                     id = "geoButtonGrid"
+                     position = " 3.645 -1 0.02"
+                     scale  = " 0.9 0.9 0.9">
+          </a-entity>
+          <a-entity  gridify-buttons = "class: material-buttons; btnCount: 4; btnWidth: 1;  columns: 4; btnHeight: 1; spacing: 0.1; color: grey,grey,grey,grey;"
+                     visible = "false"
+                     id = "materialGrid"
+                     position = " 2.245 -2 0.01"
+                     scale  = " 0.9 0.9 0.9">
+          </a-entity>
+          <a-entity  gridify-buttons = "class: color-picker-buttons; btnCount: 16; btnWidth: 1;  columns: 4; btnHeight: 1; spacing: 0.1;"
+                     visible = "false"
+                     id = "colorGrid"
+                     position = " 5.74 .98 0.01"
+                     scale  = " 0.9 0.9 0.9">
+          </a-entity>
+          <a-entity  gridify-buttons = "class: manipulation-buttons; btnCount: 3; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.2; url:assets/buttons/manipulationBtns/; imagebase: manipulation-button"
+                     visible = "false"
+                     id = "manipulationGrid"
+                     position = " 1.03 -1.69 0.15"
+                    rotation = "30 0 0"
+                     scale  = " 0.5 0.5 0.5">
+          </a-entity>
+
+
+      </a-plane>
+
+
+      
+      <a-gltf-model src="#JayBolter-gltf"
+        id ="jayModel"
+        model-opacity= "0"
+        scale = "1.5 1.5 1.5"
+        position="0 -1 -3"
+        rotation = "0 0 0"
+        animation-mixer="clip: idle; crossFadeDuration:1;"
+        sound="src:#welcome; autoplay: false">
+      </a-gltf-model>
+
+    </a-scene>
+
+  </body>
+</html>

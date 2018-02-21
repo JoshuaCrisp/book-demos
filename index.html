@@ -1,0 +1,350 @@
+<html>
+  <head>
+    <title>Theater Disaster</title>
+    <meta name="description" content="Panoramas and Cursors">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://rawgit.com/aframevr/aframe/801ab21/dist/aframe-master.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="resources/style.css">
+
+  </head>
+
+  <body>
+    <div id="BlackDiv">
+    <div id="menu" class="menu"></div>
+    </div>
+    <a-scene  light="defaultLightsEnabled: false" shadow="type: pcfsoft">  
+      
+      <!--The Theatre, people, video, and sky panorama-->
+      <a-assets>
+        <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
+        <a-asset-item id="chair-obj" src="assets/models/chair.obj"></a-asset-item>
+        <a-asset-item id="chairs-obj" src="assets/models/TheatreChairs.obj"></a-asset-item>
+        <a-asset-item id="people-obj" src="assets/models/theatrePeople.obj"></a-asset-item>
+        <a-asset-item id="proscenium-obj" src="assets/models/theatreProscenium.obj"></a-asset-item>
+        <a-asset-item id="room-obj" src="assets/models/theatreRoom.obj"></a-asset-item>
+        <video id="train-video" src="assets/train-video.mp4" playsinline></video>   
+        <img id="prosceniumMap" src="assets/textures/prosceniumDiffuseColor.jpg" />
+        <img id="roomMap" src="assets/textures/theatreRoomDiffuseColor.png" />
+        <img id="chairMap" src="assets/textures/chairDiffuseColor.png" />
+        <img id="peopleMap" src="assets/textures/peopleDiffuseColor.png" />
+        <img id="trainyardPano" src="assets/malmo.jpg">
+      </a-assets>
+
+      <!--The Train model (including stand) in parts -->
+      <a-assets>
+        <a-asset-item id="objectWheels" src="assets/models/trainWheels.obj"></a-asset-item>
+        <a-asset-item id="objectCab" src="assets/models/trainCab.obj"></a-asset-item>
+        <a-asset-item id="objectBase" src="assets/models/trainBase.obj"></a-asset-item>
+        <a-asset-item id="objectBoiler" src="assets/models/trainBoiler.obj"></a-asset-item>
+        <a-asset-item id="objectStand" src="assets/models/trainStand.obj"></a-asset-item>
+        <img id="wheelColor" src="assets/textures/WheelsCapTexture_baseColor.jpg" />
+        <img id="wheelBmp" src="assets/textures/WheelsCapTexture_normal.png" />
+        <img id="wheelAO" src="assets/textures/WheelsCapTexture_occ.jpg" />
+        <img id="lightsColor" src="assets/textures/lightsHubsTexture_baseColor.jpg" />
+        <img id="lightsBmp" src="assets/textures/lightsHubsTexture_normal.png" />
+        <img id="lightsAO" src="assets/textures/lightsHubsTexture_occ.jpg" />
+        <img id="boilerColor" src="assets/textures/boilerTexture_baseColor.jpg" />
+        <img id="boilerBmp" src="assets/textures/boilerTexture_normal.png" />
+        <img id="boilerAO" src="assets/textures/boilerTexture_occ.jpg" />
+        <img id="reflectMap" src="assets/textures/reflectSphere.jpg" />
+        <img id="standMap" src="assets/textures/trainStandDiffuseColor.png" />
+      </a-assets>
+
+      <a-sky src="#trainyardPano"></a-sky>
+
+      <!-- Using the asset management system. -->
+      <a-entity id="train" visible="true" shadow="cast: true, receive: true" rotation="4 -55 0" scale="1.5 1.5 1.5" position="43 0 -85">
+        <a-entity obj-model="obj: #objectWheels" material="src:#wheelColor; normalMap:#wheelBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #wheelAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
+        <a-entity obj-model="obj: #objectCab" material="src:#wheelColor; normalMap:#wheelBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #wheelAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
+
+        <a-entity obj-model="obj: #objectBase" material="src:#lightsColor; normalMap:#lightsBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #lightsAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
+
+        <a-entity obj-model="obj: #objectBoiler" material="src:#boilerColor; normalMap:#boilerBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #boilerAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
+        <a-entity id ="trainStand" obj-model="obj: #objectStand" material="src:#standMap; transparent: true; opacity: 0;" visible = "false" shadow="cast: false, receive: true" position = "0 2 0">
+          <a-animation
+            attribute="material.opacity"
+            delay="108000"
+            dur = "2000"
+            to="1"
+            begin= "standAppear">
+          </a-animation>
+          <a-animation
+          attribute="visible"
+          delay="108000"
+          to="true"
+          begin= "standVisible">
+        </a-animation>
+        </a-entity>
+        <!-- Train animation -->
+        <a-animation
+        attribute="position"
+         delay="60000"
+         dur = "1200"
+         easing="ease-out"
+         to="4.32 -9 -42"
+         begin= "trainStart"
+       ></a-animation>
+      <a-animation
+      attribute="rotation"
+       delay="105000"
+       dur = "5000"
+       to="4 0 0"
+       begin= "trainAR"
+     ></a-animation> 
+     
+        </a-entity>
+
+      <!--The theater box itself goes invisible on the "theaterGone" signal --> 
+      <a-entity id="theaterworld" position="0 0 0" referenceframe='parent: ar.user; userotation: false'>
+        <a-entity id ="room" obj-model="obj: #room-obj" material="src:#roomMap; transparent: true; opacity: 1;" shadow="cast: false, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
+            <a-animation attribute="material.opacity" delay="105000" dur= "5000" to= "0" begin= "roomFadeOut"> </a-animation>  
+        </a-entity>
+        <a-entity id ="proscenium" obj-model="obj: #proscenium-obj" material="src:#prosceniumMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1.040 1 1" position="6.810 -17 -5">
+            <a-animation attribute="material.opacity" delay="105000" dur = "5000" to= "0"begin= "prosceniumFadeOut"></a-animation>      
+        </a-entity>          
+        <a-entity id ="chairs" obj-model="obj: #chairs-obj" material="src:#chairMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
+            <a-animation attribute="material.opacity" delay="105000" dur= "5000" to= "0" begin= "chairsFadeOut"> </a-animation>          
+        </a-entity> 
+        <a-entity id ="people" obj-model="obj: #people-obj" material="src:#peopleMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
+            <a-animation attribute="material.opacity" delay="105000" dur= "5000" to= "0" begin= "peopleFadeOut"> </a-animation>   
+        </a-entity>
+        <a-gltf-model src="#JayBolter-gltf" id ="jayModel" opacity="true" scale="10 10 10" position="-5.394 -15.290 -40.253" rotation="0 150 0"animation-mixer="clip: walk;">  
+          <a-animation
+             attribute="position"
+             id="standUpPosition"
+             easing = "ease-in"
+             delay="2000"
+             from="-5.394 -15.290 -40.253"
+             to="-2.5 -15.5 -48.5"
+             dur="2000"
+             begin= "getUpFromChair"
+           ></a-animation>
+           <a-animation
+             attribute="rotation"
+             id="standUpRotation"
+             easing = "ease-in"
+             delay="2000"
+             from="0 150 0"
+             to="0 59 0"
+             dur="2000"
+             begin= "getUpFromChair"
+           ></a-animation>
+           <a-animation
+             attribute="position"
+             id="turn1Position"
+             easing = "linear"
+             delay="4000"
+             from="-2.5 -15.5 -48.5"
+             to="2 -15.5 -45"
+             dur="2000"
+             begin= "turnAround"
+           ></a-animation>
+           <a-animation
+             attribute="rotation"
+             id="turn1Rotation"
+             easing = "linear"
+             delay="4000"
+             from="0 59 0"
+             to="0 27.5 0"
+             dur="2000"
+             begin= "turnAround"
+           ></a-animation>
+           <a-animation
+             attribute="position"
+             id="goToCarpetPosition"
+             easing = "linear"
+             delay="6000"
+             from="2 -15.5 -45"
+             to="2.6 -15.5 -39"
+             dur="2000"
+             begin= "goToCarpet"
+           ></a-animation>
+           <a-animation
+             attribute="rotation"
+             id="goToCarpetRotation"
+             easing = "linear"
+             delay="6000"
+             from="0 27.5 0"
+             to="0 -14 0"
+             dur="2000"
+             begin= "goToCarpet"
+           ></a-animation>
+           <a-animation
+             attribute="position"
+             id="walkToChair2Position"
+             easing = "linear"
+             delay="8000"
+             from="2.6 -15.5 -39"
+             to="-11 -15.5 -15"
+             dur="8000"
+             begin= "walkToChair2"
+           ></a-animation>
+           <a-animation
+             attribute="position"
+             id="rotateToEnterRowRotation"
+             easing = "ease-in"
+             delay="18600"
+             from="-11 -15.5 -15"
+             to="-12.34 -15.5 -11.88"
+             dur="2000"
+             begin= "rotateToEnterRow"
+           ></a-animation>
+           <a-animation
+             attribute="rotation"
+             id="rotateToEnterRowRotation"
+             easing = "ease-in"
+             delay="18600"
+             from="0 -14 0"
+             to="0 150 0"
+             dur="2000"
+             begin= "rotateToEnterRow"
+           ></a-animation>
+           <a-animation
+             attribute="position"
+             id="enterRow"
+             easing = "ease-in"
+             delay="22600"
+             from="-12.34 -15.5 -11.88"
+             to="-5.155 -15.5 -7.152"
+             dur="2000"
+             begin= "rotateToEnterRow"
+           ></a-animation>
+          
+           
+        </a-gltf-model>
+      
+        <a-video id ="video" src="#train-video" width="57.6" height="32.4" rotation="0 -30 0" position="35 7 -50" visible="false" opacity = "1">
+            <a-animation attribute="visible" id="makeVisible" delay="15000"to="true" begin= "makeVisible"></a-animation>
+            <a-animation attribute="opacity" id="fadeVideoOut" delay="105000"to="0" begin= "fadeVideoOut"></a-animation>
+        </a-video>
+	    <a-animation
+		       attribute="visible"
+         	  id="theaterGone"
+            delay="114000"
+			      to="false"
+            begin= "theaterGone"
+          ></a-animation> 
+      </a-entity>
+    
+      
+      <!--Lights -->
+      <a-entity light="shadowMapWidth:1024;
+                      shadowMapHeight:1024;
+                      shadowCameraNear:0.02;
+                      decay:0.8;
+                      distance:120;
+                      intensity:1.5;
+                      penumbra:0.36;
+                      type:spot;
+                      castShadow:true;
+                      shadowCameraFov:100;
+                      shadowCameraTop:50;
+                      shadowCameraRight:40;
+                      shadowCameraBottom:-40;
+                      shadowCameraLeft:-40"
+                      id=spotLight
+                      position="45 8.08 -50.51"
+                      data-aframe-default-light="true"
+                      aframe-injected="false"
+                      rotation="0 148.4 0">
+                          <a-animation
+                          attribute="light.intensity"
+                          id="spotLightsDown"
+                          delay = 12000
+                          dur = 7000
+                          to="0.2"
+                          begin= "spotLightsDown"
+                          ></a-animation>
+                          <a-animation
+                          attribute="light.intensity"
+                          id="spotLightsUp"
+                          delay = 60000
+                          dur = 3000
+                          to="1.5"
+                          begin= "spotLightsUp"
+                          ></a-animation>
+      </a-entity>
+      <a-entity light="intensity:1;
+                      color:#BBB;
+                      type:ambient;"
+                      id="houseLight"
+                      position="0 0 0"
+                      rotation="0 0 0"
+                      scale="1 1 1"
+                      visible="true"
+                      data-aframe-default-light=""
+                      aframe-injected="">
+                        <a-animation
+                        attribute="light.intensity"
+                        id="houseLightsDown"
+                        delay = 12000
+                        dur = 7000
+                        to="0.4"
+                        begin= "houseLightsDown"
+                        ></a-animation><a-animation
+                        attribute="light.intensity"
+                        id="houseLightsUp"
+                        delay = 60000
+                        dur = 3000
+                        to="0.7"
+                        begin= "houseLightsUp"
+                        ></a-animation>
+      </a-entity>
+     
+	  
+    </a-scene>
+
+
+
+    <script>
+
+     /* var arScene = document.querySelector('ar-scene'); */
+      var jay = document.querySelector("#jayModel");
+      var train = document.querySelector("#train");
+      var content = document.querySelector('#theaterworld');
+      var room = document.querySelector('#room');
+      var proscenium = document.querySelector('#proscenium');
+      var chairs = document.querySelector('#chairs');
+      var people = document.querySelector('#people');
+      var spotLights = document.querySelector('#spotLight');
+      var houseLights = document.querySelector('#houseLight')
+      var stand = document.querySelector('#trainStand')
+      var videoElement = document.querySelector("#train-video");
+      var vidContainer = document.getElementById("#video");
+
+    //  document.querySelector("#jayModel").addEventListener("startWalking", function(){
+   // document.querySelector("#jayModel").setAttribute("animation-mixer", "clip: sitToStand; loop: once;")
+//});
+
+      var menu = document.getElementById('menu');
+      var button = document.createElement('button');
+      button.textContent = "Begin" ;
+      menu.appendChild(button);
+      button.addEventListener('click', function () {
+          videoElement.play();
+          jay.emit("getUpFromChair");
+          jay.emit("turnAround");
+          jay.emit("goToCarpet");
+          jay.emit("walkToChair2");
+          jay.emit("rotateToEnterRow");
+          video.emit('makeVisible');
+          train.emit('trainStart');
+          train.emit('trainAR');
+          stand.emit('standAppear');
+          stand.emit('standVisible');
+		      content.emit('theaterGone');
+          spotLights.emit('spotLightsDown');
+          spotLights.emit('spotLightsUp');
+          houseLights.emit('houseLightsDown');
+          houseLights.emit('houseLightsUp');
+          room.emit('roomFadeOut');
+          proscenium.emit('prosceniumFadeOut');
+          chairs.emit('chairsFadeOut');
+          people.emit('peopleFadeOut');
+          video.emit('fadeVideoOut');
+      });
+    </script>
+  </body>
+</html>
