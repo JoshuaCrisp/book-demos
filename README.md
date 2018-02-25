@@ -1,2 +1,2 @@
-# train-demo
-Film-VR-AR demo
+# Book Demos
+Demos of AR book chapters
