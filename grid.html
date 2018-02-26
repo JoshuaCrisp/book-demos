@@ -6,7 +6,6 @@
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
-    <script src="resources/aframe-no-click-look-controls.min.js"></script>
     <script src ="resources/gridify-plane.js"></script>
     <script src ="resources/gridify-buttons.js"></script>
     <script src ="resources/follow-rotation.js"></script>
@@ -18,8 +17,8 @@
     <script src ="resources/visibility-on-x.js"></script>
     <script src ="resources/model-opacity.js"></script>
     <script src ="resources/jay-caller.js"></script>
-    <script src ="resources/talk.js"></script>
     <script src ="resources/look-trigger.js"></script>
+    <script src ="resources/object-rotatable.js"></script>
 
   </head>
 
@@ -74,7 +73,7 @@
                   fuseTimeOut = "1000"
                   geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
                   material="color: red; shader: flat"
-                  raycaster="id: raycaster; far: 100; interval: 1000; objects: .gridify-button, .button-holder">
+                  raycaster="id: raycaster; far: 100; interval: 1000; objects: .gridify-button, .button-holder, .manipulator">
 
                   <a-animation begin="click"
                                easing="ease-in"

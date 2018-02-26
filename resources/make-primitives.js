@@ -4,19 +4,25 @@ AFRAME.registerComponent('make-primitives', {
 
     init: function () {
 
+        var scene = document.querySelector('#scene');
         var origin = document.querySelector('#geo-platform');
+        var position = origin.getAttribute('position');
         var el = this.el;
         var id = el.getAttribute('id');
+        var container = document.createElement('a-entity');
+        container.setAttribute('position', position);
+        container.setAttribute('class', 'container');
+        scene.appendChild(container);
 
         var makeCube = function(){
             var existing = document.querySelector('.wireframe');
                 if(existing){existing.parentNode.removeChild(existing);} 
             var cube = document.createElement('a-box');
-            cube.setAttribute('position', '0 0 1');
+            cube.setAttribute('position', '0 1 0');
             cube.setAttribute('color', 'black');
             cube.setAttribute('wireframe', true);
             cube.setAttribute('class', 'wireframe');
-            origin.appendChild(cube);
+            container.appendChild(cube);
         }
 
         var makeSphere= function(){
@@ -25,14 +31,13 @@ AFRAME.registerComponent('make-primitives', {
                     existing.parentNode.removeChild(existing);
                 }
             var sphere = document.createElement('a-sphere');
-            sphere.setAttribute('position', '0 0 1');
-            sphere.setAttribute('rotation', '90 0 0');
+            sphere.setAttribute('position', '0 1 0');
             sphere.setAttribute('color', 'black');
             sphere.setAttribute('segments-height', '6');
             sphere.setAttribute('segments-width', '12');
             sphere.setAttribute('wireframe', true);
             sphere.setAttribute('class', 'wireframe');
-            origin.appendChild(sphere);
+            container.appendChild(sphere);
         }
 
         var makeCone = function(){
@@ -43,12 +48,11 @@ AFRAME.registerComponent('make-primitives', {
             var cone = document.createElement('a-cone');
             cone.setAttribute('segments-height', '6');
             cone.setAttribute('segments-radial', '12');
-            cone.setAttribute('position', '0 0 2');
-            cone.setAttribute('rotation', '90 0 0');
+            cone.setAttribute('position', '0 1 0');
             cone.setAttribute('color', 'black');
             cone.setAttribute('wireframe', true);
             cone.setAttribute('class', 'wireframe');
-            origin.appendChild(cone);           
+            container.appendChild(cone);           
         }
 
         var makeTorus = function(){
@@ -57,14 +61,13 @@ AFRAME.registerComponent('make-primitives', {
                     existing.parentNode.removeChild(existing);
                 }
             var torus = document.createElement('a-torus');
-            torus.setAttribute('position', '0 0 1');
+            torus.setAttribute('position', '0 1 0');
             torus.setAttribute('segments-radial', 12);
             torus.setAttribute('segments-tubular', 8);
-            torus.setAttribute('rotation', '0 0 0');
             torus.setAttribute('color', 'black');
             torus.setAttribute('wireframe', true);
             torus.setAttribute('class', 'wireframe');
-            origin.appendChild(torus);
+            container.appendChild(torus);
         }
 
        var makeCylinder = function(){
@@ -75,12 +78,11 @@ AFRAME.registerComponent('make-primitives', {
             var cylinder = document.createElement('a-cylinder');
             cylinder.setAttribute('segments-height', '6');
             cylinder.setAttribute('segments-radial', '12');
-            cylinder.setAttribute('position', '0 0 0 1');
-            cylinder.setAttribute('rotation', '90 0 0');
+            cylinder.setAttribute('position', '0 1 0');
             cylinder.setAttribute('color', 'black');
             cylinder.setAttribute('wireframe', true);
             cylinder.setAttribute('class', 'wireframe');
-            origin.appendChild(cylinder);
+            container.appendChild(cylinder);
            
        }
 

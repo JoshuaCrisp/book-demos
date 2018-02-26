@@ -10,19 +10,19 @@ AFRAME.registerComponent('jay-caller', {
         
         
 
-        var fadeInJay = function(){
-        var fadeIn = document.createElement('a-animation');
-        fadeIn.setAttribute('attribute','model-opacity');
-        fadeIn.setAttribute('dur','2000');
-        fadeIn.setAttribute('from','0');
-        fadeIn.setAttribute('to','1');
-        jay.appendChild(fadeIn);
-        el.removeEventListener('click', fadeInJay);
+        var fadeIn = function(){
+        var fadeInObject= document.createElement('a-animation');
+        fadeInObject.setAttribute('attribute','model-opacity');
+        fadeInObject.setAttribute('dur','2000');
+        fadeInObject.setAttribute('from','0');
+        fadeInObject.setAttribute('to','1');
+        jay.appendChild(fadeInObject);
+        el.removeEventListener('click', fadeIn);
 
 
         }
 
-        el.addEventListener('click', fadeInJay);
+        el.addEventListener('click', fadeIn);
         
 
 
@@ -35,7 +35,9 @@ AFRAME.registerComponent('jay-caller', {
         if(opacity >= 1){
             jay.setAttribute('animation-mixer','clip: talking;');
             var node = document.querySelector('#geo-platform');
-            jay.setAttribute('talk',"src:#welcome; autoplay:false;");
+            jay.components.sound.playSound();
+            var camera = document.querySelector('#camera');
+            camera.setAttribute('look-trigger','hasLookedUp:false; hasLookedDown:false');
             node.removeAttribute('jay-caller');
         }
     }
