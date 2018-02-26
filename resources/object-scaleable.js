@@ -1,4 +1,4 @@
-AFRAME.registerComponent('object-scalable', {
+AFRAME.registerComponent('object-scaleable', {
     schema: {
 
     },
@@ -49,28 +49,28 @@ AFRAME.registerComponent('object-scalable', {
     tick: function(){
         var wireframe = document.querySelector('.wireframe');
         var selectedX = handleImgX.getAttribute('opacity');
-        var selectedY = handleImgX.getAttribute('opacity');
-        var selectedZ = handleImgX.getAttribute('opacity');
+        var selectedY = handleImgY.getAttribute('opacity');
+        var selectedZ = handleImgZ.getAttribute('opacity');
 
-        var sourceRotation = wireframe.getAttribute('rotation');
-        var rotationX = sourceRotation.x;
-        var rotationY = sourceRotation.y;
-        var rotationZ = sourceRotation.z;
+        var sourceScale = wireframe.getAttribute('scale');
+        var scaleX = sourceScale.x;
+        var scaleY = sourceScale.y;
+        var scaleZ = sourceScale.z;
 
         if(selectedX >= 1){
-            wireframe.setAttribute('rotation',
-        {x: rotationX + 10, y: rotationY, rotationZ});
+            wireframe.setAttribute('scale',
+        {x: scaleX + 0.005, y: scaleY, scaleZ});
         }
 
         if(selectedY >= 1){
-            wireframe.setAttribute('rotation',
-        {x: rotationX, y: rotationY + 10, rotationZ});
+            wireframe.setAttribute('scale',
+        {x: scaleX, y: scaleY + 0.005, scaleZ});
         }
         
 
         if(selectedZ >= 1){
-            wireframe.setAttribute('rotation',
-        {x: rotationX, y: rotationY, z: rotationZ + 10});
+            wireframe.setAttribute('scale',
+        {x: scaleX, y: scaleY, z: scaleZ + 0.005});
         }
  
     }

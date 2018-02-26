@@ -21,6 +21,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             node.setAttribute('material','src:#nodeImg2;');
             jay.setAttribute('sound','src: #rotation; autoplay: false;');
             object.setAttribute('object-rotatable',{});
+            object.removeAttribute('object-scaleable');
             jay.components.sound.playSound();
         }
         
@@ -29,6 +30,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             node.setAttribute('material','src:#nodeImg2;');
             jay.setAttribute('sound','src: #scale; autoplay: false;');
             object.removeAttribute('object-rotatable');
+            object.setAttribute('object-scaleable',{});
             jay.components.sound.playSound();
         }
 
@@ -37,6 +39,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             node.setAttribute('material','src:#nodeImg2;');
             jay.setAttribute('sound','src: #placement; autoplay: false;');
             object.removeAttribute('object-rotatable');
+            object.removeAttribute('object-scaleable');
             jay.components.sound.playSound();
         }
 
