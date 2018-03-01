@@ -14,15 +14,30 @@ AFRAME.registerComponent('make-primitives', {
         container.setAttribute('class', 'container');
         scene.appendChild(container);
 
+        var zoom= document.createElement('a-animation');
+        zoom.setAttribute('attribute','position');
+        zoom.setAttribute('dur','500');
+        zoom.setAttribute('from','0 1 -30');
+        zoom.setAttribute('to','0 1 -0');
+
+        var fade= document.createElement('a-animation');
+        fade.setAttribute('attribute','opacity');
+        fade.setAttribute('dur','500');
+        fade.setAttribute('from','0');
+        fade.setAttribute('to','1');
+
         var makeCube = function(){
             var existing = document.querySelector('.wireframe');
                 if(existing){existing.parentNode.removeChild(existing);} 
             var cube = document.createElement('a-box');
-            cube.setAttribute('position', '0 1 0');
+            cube.setAttribute('position', '0 1 -20');
             cube.setAttribute('color', 'black');
+            cube.setAttribute('opacity', '0');
             cube.setAttribute('wireframe', true);
             cube.setAttribute('class', 'wireframe');
             container.appendChild(cube);
+            cube.appendChild(zoom);
+            cube.appendChild(fade);
         }
 
         var makeSphere= function(){
@@ -33,11 +48,14 @@ AFRAME.registerComponent('make-primitives', {
             var sphere = document.createElement('a-sphere');
             sphere.setAttribute('position', '0 1 0');
             sphere.setAttribute('color', 'black');
+            sphere.setAttribute('opacity', '0');
             sphere.setAttribute('segments-height', '6');
             sphere.setAttribute('segments-width', '12');
             sphere.setAttribute('wireframe', true);
             sphere.setAttribute('class', 'wireframe');
             container.appendChild(sphere);
+            sphere.appendChild(zoom);
+            sphere.appendChild(fade);
         }
 
         var makeCone = function(){
@@ -50,9 +68,12 @@ AFRAME.registerComponent('make-primitives', {
             cone.setAttribute('segments-radial', '12');
             cone.setAttribute('position', '0 1 0');
             cone.setAttribute('color', 'black');
+            cone.setAttribute('opacity', '0');
             cone.setAttribute('wireframe', true);
             cone.setAttribute('class', 'wireframe');
-            container.appendChild(cone);           
+            container.appendChild(cone);
+            cone.appendChild(zoom);
+            cone.appendChild(fade);          
         }
 
         var makeTorus = function(){
@@ -65,9 +86,13 @@ AFRAME.registerComponent('make-primitives', {
             torus.setAttribute('segments-radial', 12);
             torus.setAttribute('segments-tubular', 8);
             torus.setAttribute('color', 'black');
+            torus.setAttribute('rotation', '90 0 0');
+            torus.setAttribute('opacity', '0');
             torus.setAttribute('wireframe', true);
             torus.setAttribute('class', 'wireframe');
             container.appendChild(torus);
+            torus.appendChild(zoom);
+            torus.appendChild(fade);
         }
 
        var makeCylinder = function(){
@@ -80,9 +105,12 @@ AFRAME.registerComponent('make-primitives', {
             cylinder.setAttribute('segments-radial', '12');
             cylinder.setAttribute('position', '0 1 0');
             cylinder.setAttribute('color', 'black');
+            cylinder.setAttribute('opacity', '0');
             cylinder.setAttribute('wireframe', true);
             cylinder.setAttribute('class', 'wireframe');
             container.appendChild(cylinder);
+            cylinder.appendChild(zoom);
+            cylinder.appendChild(fade);
            
        }
 
