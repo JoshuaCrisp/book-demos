@@ -7,6 +7,7 @@ AFRAME.registerComponent('gridify-buttons', {
         columns: {type:'number', default: 2},
         color: {type: 'array', default: ['#94248b', '#44318c', '#ee4936', '#77c94b', '#1ea155', '#e82346', '#1c5aa6', '#47b550', '#1a93ce', '#e0217e', '#fba43d', '#a6da48', '#fcc841', '#f7e344', '#d2e646']},
         url: {type: 'string'},
+        normals:{type:'boolean', default: false},
         imagebase: {type: 'string'},
         spacing: {type: 'number', default: 0.05} 
     },
@@ -33,6 +34,7 @@ AFRAME.registerComponent('gridify-buttons', {
 
         //create array of images based on imagebase and url
         var imgArray=[];
+        var normalArray=[];
             if(data.imagebase != ""){
                 //data.color.length = 0;
                 for(var i = 0; i< btnNumber; i++){
@@ -40,6 +42,13 @@ AFRAME.registerComponent('gridify-buttons', {
                 console.log(imgArray[i]);
             }
         }
+
+        if(data.normals){
+            for(var i = 0; i< btnNumber; i++){
+                normalArray.push(data.url + data.imagebase + "_normal" + '_00' + (i+1) + ".png");
+            console.log(normalArray[i]);
+        }
+    }
         
 
         //create the buttons out of A-PLANE
@@ -50,6 +59,9 @@ AFRAME.registerComponent('gridify-buttons', {
             plane.setAttribute('id', data.class + "_" + i);
             if(data.color[i] && !imgArray[i]){plane.setAttribute('color', data.color[i]);}
             if(imgArray[i]){plane.setAttribute('src',imgArray[i]);}
+            if(normalArray[i]){
+                var settings = 'shader: standard; normalMap: '
+                plane.setAttribute('material', settings + normalArray[i])}
             plane.setAttribute("position", posX + " " + posY + " 0");
             el.appendChild(plane);
             }());

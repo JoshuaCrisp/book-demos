@@ -100,8 +100,8 @@ AFRAME.registerComponent('make-primitives', {
         b_2.removeEventListener('click', getMaterials);
         b_3.removeEventListener('click', getMaterials);
         b_4.removeEventListener('click', getMaterials);
-        var materials = document.querySelector('#materialGrid');
-        materials.setAttribute('material-button-caller', {});
+        var materials = document.querySelector('#colorGrid');
+        materials.setAttribute('color-button-caller', {});
        }
 
         var b_0 = document.querySelector('#geometry-button_0');

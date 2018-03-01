@@ -8,6 +8,9 @@ AFRAME.registerComponent('color-button-caller', {
         console.log(el);
         var data = this.data;
         el.setAttribute('visible', true);
+        var jay = document.querySelector('#jayModel');
+        jay.setAttribute('sound','src: #material; autoplay: false;');
+        jay.components.sound.playSound();
         var wireframe = document.querySelector('.wireframe');
         var container = document.querySelector('.container');
 
@@ -15,8 +18,8 @@ AFRAME.registerComponent('color-button-caller', {
 
         var colorOptions = function(){
             var selected = this;
-            var color = selected.getAttribute('color');
-            wireframe.setAttribute('color',color);
+            var material = selected.getAttribute('material');
+            wireframe.setAttribute('material',material);
             
         }
 

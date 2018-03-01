@@ -52,8 +52,6 @@
             <a-asset-item id="board-gltf" src="assets/models/board.gltf"></a-asset-item>
             <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
             <a-asset-item id="plate-gltf" src="assets/models/plate.gltf"></a-asset-item>
-            <a-asset-item id="filmcamera-obj" src="assets/models/filmcamera.obj"></a-asset-item>
-            <a-asset-item id="filmcamera-mtl" src="assets/models/filmcamera.mtl"></a-asset-item>
             <audio id = "add" src="assets/audio/speech-add.m4a" preload></audio>
             <audio id = "end" src="assets/audio/speech-end.m4a" preload></audio>
             <audio id = "geometry" src="assets/audio/speech-geometry.m4a" preload></audio>
@@ -69,11 +67,8 @@
       <a-camera id = "camera"> 
           <a-plane visibility-on-x color id = "node-portol"  material ="shader:flat; src: #nodeImg"  width = "16" height = "9"  scale = "1.5 1.5 1.5" position = " 0 0 -12" opacity = "0" side = "double"></a-plane>
 
-        <a-cursor cursor-listener
-                  fuse = "true"
-                  fuseTimeOut = "1000"
-                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                  material="color: red; shader: flat"
+        <a-cursor 
+                  rayOrigin = "mouse"
                   raycaster="id: raycaster; far: 100; interval: 1000; objects: .gridify-button, .button-holder, .manipulator">
 
                   <a-animation begin="click"
@@ -111,12 +106,13 @@
                     jay-caller
                     >
 
-          <a-entity  gridify-buttons = "class: geometry-button; btnCount: 5; btnWidth: 1;  columns: 6; btnHeight: 1; spacing: 0.1; url:assets/buttons/geometryBtns/; imagebase: geometryButton"
+          <a-entity  gridify-buttons = "class: geometry-button; btnCount: 5; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.1; url:assets/buttons/geometryBtns/; imagebase: geometryButton"
                      make-primitives
                      visible = "false"
                      id = "geoButtonGrid"
-                     position = " 3.645 -1 0.02"
-                     scale  = " 0.9 0.9 0.9">
+                     position = " 2.3 0 2.690"
+                     rotation =  "90 0 0"
+                     scale  = " 0.8 0.8 0.8">
           </a-entity>
           <a-entity  gridify-buttons = "class: material-buttons; btnCount: 4; btnWidth: 1;  columns: 4; btnHeight: 1; spacing: 0.1; color: grey,grey,grey,grey;"
                      visible = "false"
@@ -124,13 +120,14 @@
                      position = " 2.245 -2 0.01"
                      scale  = " 0.9 0.9 0.9">
           </a-entity>
-          <a-entity  gridify-buttons = "class: color-picker-buttons; btnCount: 16; btnWidth: 1;  columns: 4; btnHeight: 1; spacing: 0.1;"
+          <a-entity  gridify-buttons = "class: color-picker-buttons; btnCount: 12; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.1; normals:true; url:assets/buttons/materialBtns/; imagebase: material"
                      visible = "false"
                      id = "colorGrid"
-                     position = " 5.74 .98 0.01"
-                     scale  = " 0.9 0.9 0.9">
+                     position = " 1.23 0.6 3.49"
+                     rotation = " 90 0 0"
+                     scale  = " 0.5 0.5 0.5">
           </a-entity>
-          <a-entity  gridify-buttons = "class: manipulation-buttons; btnCount: 3; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.2; url:assets/buttons/manipulationBtns/; imagebase: manipulation-button"
+          <a-entity  gridify-buttons = "class: manipulation-buttons; btnCount: 3; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.2;  url:assets/buttons/manipulationBtns/; imagebase: manipulation-button"
                      visible = "false"
                      id = "manipulationGrid"
                      position = " 1.03 -1.69 0.15"
