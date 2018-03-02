@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>The Scene Graph</title>
+    <meta name="description" content="Understanding the Scene Graph">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+
+  </head>
+
+  <body>
+
+      
+
+    <a-scene id="scene">
+
+        <a-assets>
+            <audio id = "material" src="assets/audio/speech-material.m4a" preload= "auto"></audio>
+            <img id="gridSquare-white" src="assets/textures/gridSquare.png">
+          </a-assets>
+
+      <a-camera id = "camera"> 
+
+        <a-cursor></a-cursor> 
+
+      </a-camera>
+
+      <a-sky color = "#ffffff"></a-sky>
+      <a-entity id="floor" gridify-plane = "height: 1; width:1; rows:40; columns:40; src: #gridSquare-white;" rotation = "-90 0 0" position = "0 -1 0"></a-entity>
+
+    </a-scene>
+
+  </body>
+</html>
