@@ -60,9 +60,9 @@ AFRAME.registerComponent('jay-caller', {
         if(opacity >= 1){
             var walkObject= document.createElement('a-animation');
             walkObject.setAttribute('attribute','position');
-            walkObject.setAttribute('dur','11500');
+            walkObject.setAttribute('dur','16500');
             walkObject.setAttribute('easing','linear');
-            walkObject.setAttribute('from','-4 -1 -10');
+            walkObject.setAttribute('from','-4 -1 -16');
             walkObject.setAttribute('to','-2 -1 -3');
             walkObject.setAttribute('delay','500');
             jay.appendChild(walkObject);
