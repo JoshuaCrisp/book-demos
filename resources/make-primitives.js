@@ -5,8 +5,8 @@ AFRAME.registerComponent('make-primitives', {
     init: function () {
 
         var scene = document.querySelector('#scene');
-        var origin = document.querySelector('#geo-platform');
-        var position = origin.getAttribute('position');
+        var origin = document.querySelector('#addBtn');
+        var position = "0 -1 -3";
         var el = this.el;
         var id = el.getAttribute('id');
         var container = document.createElement('a-entity');
@@ -128,8 +128,15 @@ AFRAME.registerComponent('make-primitives', {
         b_2.removeEventListener('click', getMaterials);
         b_3.removeEventListener('click', getMaterials);
         b_4.removeEventListener('click', getMaterials);
-        var materials = document.querySelector('#colorGrid');
-        materials.setAttribute('color-button-caller', {});
+
+        var materialGrid = document.createElement('a-entity');
+        materialGrid.setAttribute('gridify-buttons',"class: color-picker-buttons; btnCount: 12; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.1; normals:true; url:assets/buttons/materialBtns/; imagebase: material");
+        materialGrid.setAttribute('id',"colorGrid");
+        materialGrid.setAttribute('class',"button");
+        materialGrid.setAttribute('position', "1 3 -3");
+        materialGrid.setAttribute('scale', "0.5 0.5 0.5");
+        scene.appendChild(materialGrid);
+        materialGrid.setAttribute('color-button-caller', {});
        }
 
         var b_0 = document.querySelector('#geometry-button_0');

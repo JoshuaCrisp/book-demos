@@ -7,11 +7,15 @@ AFRAME.registerComponent('look-trigger', {
     tick: function () {
         var el = this.el;
         var jay = document.querySelector('#jayModel');
+        var btn = document.querySelector('#addBtn');
+        var btnText = document.querySelector('#btnText');
         if(this.data.hasLookedUp == false){
            var cameraRot= el.getAttribute('rotation');
            if(cameraRot.x >= 53){
                jay.setAttribute('position', '-2 -1 -3');
                jay.setAttribute('rotation', '0 30 0');
+               btn.setAttribute('visible','true');
+               btnText.setAttribute('value', "click to create object");
                 this.data.hasLookedUp = true;
            }
         }
@@ -24,8 +28,7 @@ AFRAME.registerComponent('look-trigger', {
          }
 
          if(this.data.hasLookedUp == true && this.data.hasLookedDown == true ){
-             console.log('here that?');
-            var btn = document.querySelector('#geo-platform');
+            var btn = document.querySelector('#addBtn');
             btn.setAttribute('geometry-button-caller',{});
             jay.removeAttribute('talk');
             el.removeAttribute('look-trigger');

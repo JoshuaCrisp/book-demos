@@ -10,6 +10,7 @@ AFRAME.registerComponent('geometry-button-caller', {
         var jay = document.querySelector("#jayModel");
         console.log()
             jay.setAttribute('sound',"src: #add; autoplay: false;");
+            jay.setAttribute('animation-mixer','clip: talking;');
             jay.components.sound.playSound();
        
         var getButtons = function(){
@@ -20,12 +21,14 @@ AFRAME.registerComponent('geometry-button-caller', {
             var geobtngrid = document.querySelector('#geoButtonGrid');
             geobtngrid.setAttribute('make-primitives',{});
             geobtngrid.setAttribute('visible', true);
+            var addBtn = document.querySelector('#addBtn');
+            addBtn.setAttribute('visible', false);
             el.removeAttribute('geometry-button-caller');
             
 
         }
 
-        el.addEventListener('mouseenter', getButtons); 
+        el.addEventListener('click', getButtons); 
 
     }
 

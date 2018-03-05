@@ -22,6 +22,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             jay.setAttribute('sound','src: #rotation; autoplay: false;');
             object.setAttribute('object-rotatable',{});
             object.removeAttribute('object-scaleable');
+            object.removeAttribute('object-moveable');
             jay.components.sound.playSound();
         }
         
@@ -30,6 +31,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             node.setAttribute('material','src:#nodeImg2;');
             jay.setAttribute('sound','src: #scale; autoplay: false;');
             object.removeAttribute('object-rotatable');
+            object.removeAttribute('object-moveable');
             object.setAttribute('object-scaleable',{});
             jay.components.sound.playSound();
         }
@@ -40,6 +42,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             jay.setAttribute('sound','src: #placement; autoplay: false;');
             object.removeAttribute('object-rotatable');
             object.removeAttribute('object-scaleable');
+            object.setAttribute('object-moveable',{});
             jay.components.sound.playSound();
         }
 
@@ -50,9 +53,9 @@ AFRAME.registerComponent('manipulation-button-caller', {
 
 
      
-     btns[0].addEventListener('mouseenter', playScale);
-     btns[1].addEventListener('mouseenter', playRotate);
-     btns[2].addEventListener('mouseenter', playMove);
+     btns[0].addEventListener('click', playScale);
+     btns[1].addEventListener('click', playRotate);
+     btns[2].addEventListener('click', playMove);
     }
 
    

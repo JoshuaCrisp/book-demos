@@ -5,8 +5,6 @@ AFRAME.registerComponent('model-opacity', {
     },
     update: function (oldData) {
       var mesh = this.el.getObject3D('mesh');
-      console.log ("Here is the mesh");
-      console.log (mesh);
       var data = this.data;
       if (!mesh) { return; }
       mesh.traverse(function (node) {

@@ -5,10 +5,11 @@ AFRAME.registerComponent('jay-caller', {
 
     init: function () {
         var el = this.el;
-        console.log('called');
         var jay = document.querySelector('#jayModel');
         
-        
+        var stopTalking =function(){
+            jay.setAttribute('animation-mixer','clip: idle;');
+        }
 
         var fadeIn = function(){
         var fadeInObject= document.createElement('a-animation');
@@ -21,7 +22,7 @@ AFRAME.registerComponent('jay-caller', {
 
 
         }
-
+        jay.addEventListener('sound-ended', stopTalking);
         el.addEventListener('click', fadeIn);
         
 
@@ -29,18 +30,21 @@ AFRAME.registerComponent('jay-caller', {
     },
 
     tick: function(){
-
         var jay = document.querySelector('#jayModel');
         var opacity = jay.getAttribute('model-opacity');
         if(opacity >= 1){
-            jay.setAttribute('animation-mixer','clip: talking;');
-            var node = document.querySelector('#geo-platform');
+            jay.setAttribute('animation-mixer','clip: talking;');          
+            var node = document.querySelector('#addBtn');
             jay.components.sound.playSound();
             var camera = document.querySelector('#camera');
             camera.setAttribute('look-trigger','hasLookedUp:false; hasLookedDown:false');
             node.removeAttribute('jay-caller');
+            node.setAttribute('visible', false);
         }
-    }
+
+       
+        }
+
 
    
 

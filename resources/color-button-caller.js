@@ -4,6 +4,7 @@ AFRAME.registerComponent('color-button-caller', {
     },
 
     init: function () {
+        var scene = document.querySelector('#scene');
         var el = this.el;
         console.log(el);
         var data = this.data;
@@ -24,7 +25,14 @@ AFRAME.registerComponent('color-button-caller', {
         }
 
         var getManipulators = function(){
-            var manBtns = document.querySelector('#manipulationGrid');
+            var colorGrid = document.querySelector('#colorGrid');
+            var manBtns = document.createElement('a-entity');
+            manBtns.setAttribute('gridify-buttons',"class: manipulation-buttons; btnCount: 3; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.2;  url:assets/buttons/manipulationBtns/; imagebase: manipulation-button" );
+            manBtns.setAttribute('position', " 3 -0.5 -2.2");
+            manBtns.setAttribute('rotation', "-30 -25 0");
+            manBtns.setAttribute('scale', "0.5 0.5 0.5");
+            manBtns.setAttribute('class', "button");
+            scene.appendChild(manBtns);
             manBtns.setAttribute('manipulation-button-caller',{});
             el.removeEventListener('mouseenter',colorOptions);
             el.removeEventListener('click',getManipulators);
@@ -64,6 +72,8 @@ AFRAME.registerComponent('color-button-caller', {
             plane3.setAttribute('material','src:#handle-zu; alphaTest:0.5');
             plane3.setAttribute('visible','false');
             container.appendChild(plane3);
+            scene.removeChild(colorGrid);
+            
             
             
         
