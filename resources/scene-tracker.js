@@ -1,0 +1,9 @@
+var tutIntroduction = true;
+var tutAdd = true;
+var tutMaterial = true;
+var tutManipulate = true;
+var tutScale = true;
+var tutRotate = true;
+var tutMove = true;
+var tutMove2 = true;
+var tutCreated= true;

@@ -6,12 +6,16 @@ AFRAME.registerComponent('color-button-caller', {
     init: function () {
         var scene = document.querySelector('#scene');
         var el = this.el;
-        console.log(el);
         var data = this.data;
         el.setAttribute('visible', true);
+        
         var jay = document.querySelector('#jayModel');
-        jay.setAttribute('sound','src: #material; autoplay: false;');
-        jay.components.sound.playSound();
+        if(jay){
+            jay.setAttribute('sound','src: #material; autoplay: false;');
+            jay.setAttribute('animation-mixer','clip: talking;');
+            jay.components.sound.playSound();
+        }
+        
         var wireframe = document.querySelector('.wireframe');
         var container = document.querySelector('.container');
 

@@ -129,6 +129,7 @@ AFRAME.registerComponent('make-primitives', {
         b_3.removeEventListener('click', getMaterials);
         b_4.removeEventListener('click', getMaterials);
 
+
         var materialGrid = document.createElement('a-entity');
         materialGrid.setAttribute('gridify-buttons',"class: color-picker-buttons; btnCount: 12; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.1; normals:true; url:assets/buttons/materialBtns/; imagebase: material");
         materialGrid.setAttribute('id',"colorGrid");
@@ -137,6 +138,7 @@ AFRAME.registerComponent('make-primitives', {
         materialGrid.setAttribute('scale', "0.5 0.5 0.5");
         scene.appendChild(materialGrid);
         materialGrid.setAttribute('color-button-caller', {});
+        scene.removeChild(el);
        }
 
         var b_0 = document.querySelector('#geometry-button_0');

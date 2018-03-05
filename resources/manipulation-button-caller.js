@@ -4,46 +4,54 @@ AFRAME.registerComponent('manipulation-button-caller', {
     },
 
     init: function () {
-        var played = 0;
         var el = this.el;
         el.setAttribute('visible', true);
         var jay = document.querySelector('#jayModel');
-        jay.setAttribute('sound','src: #manipulation; autoplay: false;');
-        jay.components.sound.playSound();
-        
         var btns = document.querySelectorAll('.manipulation-buttons');
         var object = document.querySelector('.wireframe');
-        var sound = "";
-        console.log(object);
+        
+        if(tutManipulate){
+            tutManipulate = false;
+            jay.setAttribute('sound','src: #manipulation; autoplay: false;');
+            jay.components.sound.playSound();
+        }
        
-        var playRotate= function(){
-            var node = document.querySelector('#node-portol');
-            node.setAttribute('material','src:#nodeImg2;');
-            jay.setAttribute('sound','src: #rotation; autoplay: false;');
+        var playRotate= function(){   
             object.setAttribute('object-rotatable',{});
             object.removeAttribute('object-scaleable');
             object.removeAttribute('object-moveable');
-            jay.components.sound.playSound();
+    
+            if (tutRotate){
+                tutRotate = false;
+                jay.setAttribute('sound','src: #rotation; autoplay: false;');
+                jay.components.sound.playSound();
+            }
         }
         
         var playScale= function(){
             var node = document.querySelector('#node-portol');
-            node.setAttribute('material','src:#nodeImg2;');
-            jay.setAttribute('sound','src: #scale; autoplay: false;');
+            
             object.removeAttribute('object-rotatable');
             object.removeAttribute('object-moveable');
             object.setAttribute('object-scaleable',{});
-            jay.components.sound.playSound();
+            
+            if(tutScale){
+                tutScale = false;
+                jay.setAttribute('sound','src: #scale; autoplay: false;');
+                jay.components.sound.playSound();
+            }
         }
 
-        var playMove= function(){
-            var node = document.querySelector('#node-portol');
-            node.setAttribute('material','src:#nodeImg2;');
-            jay.setAttribute('sound','src: #placement; autoplay: false;');
+        var playMove= function(){          
             object.removeAttribute('object-rotatable');
             object.removeAttribute('object-scaleable');
             object.setAttribute('object-moveable',{});
-            jay.components.sound.playSound();
+
+            if(tutMove){
+                tutMove = false;
+                jay.setAttribute('sound','src: #placement-xz; autoplay: false;');
+                jay.components.sound.playSound();
+            }
         }
 
          

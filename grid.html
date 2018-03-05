@@ -21,6 +21,7 @@
     <script src ="resources/object-rotatable.js"></script>
     <script src ="resources/object-scaleable.js"></script>
     <script src ="resources/object-moveable.js"></script>
+    <script src ="resources/scene-tracker.js"></script>
 
   </head>
 
@@ -44,12 +45,12 @@
             <img id="nodeImg" src="assets/node-view.png">
             <img id="nodeImg2" src="assets/node-view2.png">
             <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
-            <audio id = "add" src="assets/audio/speech-add.m4a" preload></audio>
-            <audio id = "end" src="assets/audio/speech-end.m4a" preload></audio>
+            <audio id = "created" src="assets/audio/speech-created.m4a" preload></audio>
             <audio id = "geometry" src="assets/audio/speech-geometry.m4a" preload></audio>
             <audio id = "manipulation" src="assets/audio/speech-manipulate.m4a" preload></audio>
             <audio id = "material" src="assets/audio/speech-material.m4a" preload></audio>
-            <audio id = "placement" src="assets/audio/speech-placement.m4a" preload></audio>
+            <audio id = "placement-xz" src="assets/audio/speech-placement-xz.m4a" preload></audio>
+            <audio id = "placement-y" src="assets/audio/speech-placement-y.m4a" preload></audio>
             <audio id = "rotation" src="assets/audio/speech-rotation.m4a" preload></audio>
             <audio id = "scale" src="assets/audio/speech-scale.m4a" preload></audio>
             <audio id = "welcome" src="assets/audio/speech-welcome.m4a" preload></audio>
@@ -57,10 +58,10 @@
           </a-assets>
 
       <a-camera id = "camera"> 
-          <a-plane visibility-on-x color id = "node-portol"  material ="shader:flat; src: #nodeImg"  width = "16" height = "9"  scale = "1.5 1.5 1.5" position = " 0 0 -12" opacity = "0" side = "double"></a-plane>
+         
 
         <a-cursor 
-                  raycaster="id: raycaster; far: 100; objects: .button, .manipulator;">
+                  raycaster="far: 100; objects: .button, .manipulator;">
 
                   <a-animation begin="click"
                                easing="ease-in"
@@ -68,15 +69,6 @@
                                fill="forwards"
                                from="0.1 0.1 0.1"
                                to="1 1 1">
-                  </a-animation>
-                  <a-animation begin="cursor-fusing"
-                               easing="linear"
-                               attribute="scale"
-                               delay = "1000"
-                               dur="500"
-                               fill="forwards"
-                               from="1 1 1"
-                               to="0.1 0.1 0.1">
                   </a-animation>
 
         </a-cursor>
@@ -105,14 +97,7 @@
           </a-text>
         </a-plane>
 
-        <a-entity  gridify-buttons = "class: geometry-button; btnCount: 5; btnWidth: 1;  columns: 2; btnHeight: 1; spacing: 0.1; url:assets/buttons/geometryBtns/; imagebase: geometryButton"
-                    id = "geoButtonGrid"
-                    class = "button"
-                    make-primitives
-                    visible = "false"
-                    position = " 4 1.273 -5"
-                    scale  = " 0.8 0.8 0.8">
-        </a-entity>
+        
 
 
       
@@ -120,8 +105,8 @@
         id ="jayModel"
         model-opacity= "0"
         scale = "1.5 1.5 1.5"
-        position="0 -1 -3"
-        rotation = "0 0 0"
+        position="-4 -1 -10"
+        rotation = "0 30 0"
         animation-mixer="clip: idle; crossFadeDuration:1;"
         sound="src:#welcome; autoplay: false">
       </a-gltf-model>

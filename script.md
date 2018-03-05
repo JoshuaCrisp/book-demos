@@ -1,27 +1,22 @@
 
-Welcome to the scene graph.  Everything in our virtual world lives here. Even us.  Although we see ourselves as people in an environment, the computer sees us as a list of objects and abilities. We call list list of objects  “the node tree.” Our VR scene is an illusion created by mathematics.  The node tree is what is real. Take a look! It’s right above you.
+Welcome to the scene graph.  Everything in our virtual world lives here. Even us! Right now, it looks a little empty. Lets add something to our scene!
 
-
-Lets add something to our scene.  Look at the plus sign with your cursor to begin.
-
-
-First we need some geometry. As your cursor touches each button , you will see a preview in 3D. When you are ready, leave your cursor over an option for two seconds to select it.
-
+First we need some geometry. Move your cursor over any of the options to get a preview. Click to select the geometry you want!
 
 Now add a material to wrap around this geometry.
 
-
 Now that we have created our object, we can manipulate it and put it in our scene.
 
-
 SCALE
-Even after creating the object, we can still change it’s size.
-Actually,  we cannot, because is just a demo. But we can see how we might do it.
+Even after creating the object, we can still change its size. Move your curor over the x, y, or z axis to make the object larger.
 
 ROTATION
-We can rotate the object along the x y and z axis.
-Actually,  we cannot, because is just a demo. But we can see how we might do it.
+We can also rotate the object!  Move your cursor over the x, y, or z axis to rotate the object along that axis.
 
 PLACEMENT
-We can move our object around in the scene.
-Actually,  we cannot. This is just a demo. But we can see how we might do it. Soon, you will be able to create and share your own VR and AR worlds from here.  For THIS demo, you have been able to create an object and add it to the node tree.
+We can move our object around in the scene. Move your cursor around the scene, and click to place the object where you want it.
+
+PLACEMENT Y
+Objects are not limited to sitting on the floor. Use your curser to place the object at any height, and click when you have it where you want it.
+
+Go ahead and build your scene with as many objects as you want. When you are happy with your scene, meet me at the node tree.
