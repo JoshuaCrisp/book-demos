@@ -39,14 +39,12 @@ AFRAME.registerComponent('gridify-buttons', {
                 //data.color.length = 0;
                 for(var i = 0; i< btnNumber; i++){
                 imgArray.push(data.url + data.imagebase + '_00' + (i+1) + ".png");
-                console.log(imgArray[i]);
             }
         }
 
         if(data.normals){
             for(var i = 0; i< btnNumber; i++){
                 normalArray.push(data.url + data.imagebase + "_normal" + '_00' + (i+1) + ".png");
-            console.log(normalArray[i]);
         }
     }
         
