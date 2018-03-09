@@ -5,52 +5,55 @@ AFRAME.registerComponent('object-scaleable', {
 
     init: function () {
         var el = this.el;
+        var scaleHandles = document.querySelector('.scaleHandles')
         var handleImgX = document.querySelector('#handleImgX');
         var handleImgY = document.querySelector('#handleImgY');
         var handleImgZ = document.querySelector('#handleImgZ');
 
-        handleImgX.setAttribute('visible', true);
-        handleImgY.setAttribute('visible', true);
-        handleImgZ.setAttribute('visible', true);
+
+        
+        handleImgX.setAttribute('model-opacity', 0.5);
+        handleImgY.setAttribute('model-opacity', 0.5);
+        handleImgZ.setAttribute('model-opacity', 0.5);
         
         
         var rotX= function(){
-           handleImgX.setAttribute('opacity',1);
+           handleImgX.setAttribute('model-opacity',1);
         }
         
         var rotY= function(){
-            handleImgY.setAttribute('opacity',1);
+            handleImgY.setAttribute('model-opacity',1);
         }
 
         var rotZ= function(){
-            handleImgZ.setAttribute('opacity',1);
+            handleImgZ.setAttribute('model-opacity',1);
         }
 
         var stopRotX= function(){
-            handleImgX.setAttribute('opacity',0.5);
+            handleImgX.setAttribute('model-opacity',0.5);
          }
          
          var stopRotY= function(){
-             handleImgY.setAttribute('opacity',0.5);
+             handleImgY.setAttribute('model-opacity',0.5);
          }
  
          var stopRotZ= function(){
-             handleImgZ.setAttribute('opacity',0.5);
+             handleImgZ.setAttribute('model-opacity',0.5);
          }
 
-         handleImgX.addEventListener('mouseenter',rotX);
+         handleImgX.addEventListener('mousedown',rotX);
          handleImgX.addEventListener('mouseleave',stopRotX);
-         handleImgY.addEventListener('mouseenter',rotY);
+         handleImgY.addEventListener('mousedown',rotY);
          handleImgY.addEventListener('mouseleave',stopRotY);
-         handleImgZ.addEventListener('mouseenter',rotZ);
+         handleImgZ.addEventListener('mousedown',rotZ);
          handleImgZ.addEventListener('mouseleave',stopRotZ);
     },
 
     tick: function(){
         var wireframe = document.querySelector('.wireframe');
-        var selectedX = handleImgX.getAttribute('opacity');
-        var selectedY = handleImgY.getAttribute('opacity');
-        var selectedZ = handleImgZ.getAttribute('opacity');
+        var selectedX = handleImgX.getAttribute('model-opacity');
+        var selectedY = handleImgY.getAttribute('model-opacity');
+        var selectedZ = handleImgZ.getAttribute('model-opacity');
 
         var positionX = handleImgX.getAttribute('position');
         var positionY = handleImgY.getAttribute('position');

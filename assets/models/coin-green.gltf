@@ -1,0 +1,188 @@
+{
+    "accessors": [
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 112,
+            "max": [
+                0.9238795638084412,
+                0.9238795638084412,
+                1.0
+            ],
+            "min": [
+                -0.9238795042037964,
+                -0.9238795638084412,
+                -1.0
+            ],
+            "name": "accessor_buffer_Cylinder.001_NORMAL_0",
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 112,
+            "max": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "min": [
+                -1.0,
+                -1.0,
+                -1.0
+            ],
+            "name": "accessor_buffer_Cylinder.001_POSITION_0",
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 180,
+            "max": [
+                111
+            ],
+            "min": [
+                0
+            ],
+            "name": "accessor_buffer_Cylinder.001_0",
+            "type": "SCALAR"
+        }
+    ],
+    "asset": {
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 1344,
+            "byteOffset": 0,
+            "byteStride": 12,
+            "name": "bufferView_buffer_Cylinder.001_POSITION_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1344,
+            "byteOffset": 1344,
+            "byteStride": 12,
+            "name": "bufferView_buffer_Cylinder.001_NORMAL_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 360,
+            "byteOffset": 2688,
+            "name": "bufferView_buffer_Cylinder.001_0",
+            "target": 34963
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 3048,
+            "name": "buffer_coin-green",
+            "uri": "data:application/octet-stream;base64,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nbgtv1Xqjz6iuC0/Fe/DPl+DbL8AAAAAn7gtP1Lqj76huC2/nrgtv1Lqj76fuC0/U+qPPp+4Lb+fuC2/Fe/DPl+DbL8AAAAAnbgtv1Xqjz6iuC0/tivGMgAAAAAAAIA/X4NsPxXvwz4AAAAAUOqPvp64LT+iuC0/tStGMwAAAAAAAIC/UOqPvp64LT+iuC0/tivGMgAAAAAAAIA/XoNsvxLvwz4AAAAAn7gtP1Lqjz6huC2/nbgtv1Xqjz6iuC2/Fe/DPl+DbL8AAAAAVOqPPp64LT+guC0/n7gtP1Lqj76huC2/n7gtP1Lqj76huC0/Ge/Dvl2DbL8AAAAAVOqPvp24Lb+huC2/tivGMgAAAAAAAIA/VeqPPp+4Lb+fuC0/UOqPvp64LT+iuC0/nrgtv1Lqj76fuC2/tivGMgAAAAAAAIA/nrgtv1Lqj76fuC2/n7gtP1Lqjz6huC0/XoNsvxLvw74AAAAAtStGMwAAAAAAAIC/TuqPvp64LT+huC2/nbgtv1Xqjz6iuC2/tStGMwAAAAAAAIC/GO/Dvl2DbD8AAAAAVOqPvp24Lb+huC2/XoNsvxLvwz4AAAAAU+qPPp+4Lb+fuC2/Ge/Dvl2DbL8AAAAAGO/Dvl2DbD8AAAAAUOqPvp64LT+iuC0/X4NsPxXvwz4AAAAAV+qPPp+4LT+fuC2/GO/Dvl2DbD8AAAAAn7gtP1Lqj76huC2/VOqPPp64LT+guC0/X4NsPxfvw74AAAAAV+qPPp+4LT+fuC2/VeqPPp+4Lb+fuC0/n7gtP1Lqjz6huC2/TuqPvp64LT+huC2/Fu/DPl+DbD8AAAAAn7gtP1Lqjz6huC2/X4NsPxfvw74AAAAAUuqPvp24Lb+huC0/XoNsvxLvwz4AAAAAUuqPvp24Lb+huC0/tStGMwAAAAAAAIC/nbgtv1Xqjz6iuC0/n7gtP1Lqjz6huC2/X4NsPxXvwz4AAAAATuqPvp64LT+huC2/XoNsvxLvw74AAAAAnrgtv1Lqj76fuC0/nbgtv1Xqjz6iuC2/Fu/DPl+DbD8AAAAAUuqPvp24Lb+huC0/VOqPPp64LT+guC0/nrgtv1Lqj76fuC2/tivGMgAAAAAAAIA/tStGMwAAAAAAAIC/nbgtv1Xqjz6iuC0/n7gtP1Lqj76huC0/tivGMgAAAAAAAIA/WQARAGcAWQBnAAgATwBiAAUATwAFAC4AWwAYABUAWwAVAFQAFwArADYAFwA2ACcAGwBMAAoAGwAKADoAJAATAEMAJABDAGQAHwBGAGYAHwBmADUAMwAjAEoAMwBKAF0ATQAGAEgATQBIAFEAUwBpADcAUwA3ABIADwAcAGsADwBrADwADwA8AEAADwBAAG8ADwBvAC0ADwAtADIAMABEAB4AMAAeAAwAMAAMAEcAMABHAAMAMAADAGwAMABsAF8AKgBLAA4AKgAOABoAIgBJADsAIgA7ABYAYAAsACYAYAAmAG0AEAA9AFYAEABWAAEAXABeAGgAXABoAAcAWgBhAFcAWgBXADQAFAACAAAAFAAAAEIAWABjAB0AWAAdAEUAPgBOADEAPgAxAC8AGQBBAGoAGQBqAD8AOAAoAFIAOABSACAAZQAEACEAZQAhACkACQA5AG4ACQBuAAsAJQBVAA0AJQANAFAA"
+        }
+    ],
+    "materials": [
+        {
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "blue",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.10316489636898041,
+                    0.6399999856948853,
+                    0.10831081122159958,
+                    1.0
+                ],
+                "metallicFactor": 0.0,
+                "roughnessFactor": 1.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Cylinder.001",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 0,
+                        "POSITION": 1
+                    },
+                    "indices": 2,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "mesh": 0,
+            "name": "Cylinder.001",
+            "rotation": [
+                0.7071068286895752,
+                0.0,
+                0.0,
+                0.7071068286895752
+            ],
+            "scale": [
+                0.25252172350883484,
+                0.25252172350883484,
+                0.044083159416913986
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                3.0945308208465576
+            ]
+        },
+        {
+            "children": [
+                0
+            ],
+            "matrix": [
+                -1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "name": "Scene_root"
+        }
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "extras": {
+                "background_color": [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824
+                ],
+                "frames_per_second": 24
+            },
+            "name": "Scene",
+            "nodes": [
+                1
+            ]
+        }
+    ]
+}

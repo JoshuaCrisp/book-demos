@@ -55,9 +55,10 @@ AFRAME.registerComponent('object-moveable', {
             scene.removeEventListener('click', readyPlaceY);}, 1000);
             if(tutMove2){
                 tutMove2 = false;
+                jay.setAttribute('animation-mixer','clip: talking;');
                 jay.setAttribute('sound','src: #placement-y; autoplay: false;');
                 jay.components.sound.playSound();
-                jay.setAttribute('animation-mixer','clip: talking;');
+
             }
         }
 
@@ -106,6 +107,11 @@ AFRAME.registerComponent('object-moveable', {
                         scene.removeEventListener('click', readyPlaceY);
                         scene.removeEventListener('click', placedY);
                         wireframe.removeAttribute('object-moveable');
+                        wireframe.setAttribute('class', 'object');
+                        var container = document.querySelector('.container');
+                        objectCount +=1;
+                        console.log("objectCount = " + objectCount);
+                        container.setAttribute('class','container'+objectCount);
                         
 
             }

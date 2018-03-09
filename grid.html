@@ -5,22 +5,19 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
     <script src ="resources/gridify-plane.js"></script>
     <script src ="resources/gridify-buttons.js"></script>
-    <script src ="resources/follow-rotation.js"></script>
     <script src ="resources/make-primitives.js"></script>
     <script src ="resources/geometry-button-caller.js"></script>
-    <script src ="resources/material-button-caller.js"></script>
     <script src ="resources/color-button-caller.js"></script>
     <script src ="resources/manipulation-button-caller.js"></script>
-    <script src ="resources/visibility-on-x.js"></script>
     <script src ="resources/model-opacity.js"></script>
     <script src ="resources/jay-caller.js"></script>
     <script src ="resources/look-trigger.js"></script>
-    <script src ="resources/object-rotatable.js"></script>
     <script src ="resources/object-scaleable.js"></script>
     <script src ="resources/object-moveable.js"></script>
+    <script src ="resources/scale-on-drag.js"></script>
+    <script src ="resources/rotate-on-drag.js"></script>
     <script src ="resources/scene-tracker.js"></script>
 
   </head>
@@ -44,7 +41,18 @@
             <img id="handle-zs" src="assets/buttons/handles/handle_x_s.png">
             <img id="nodeImg" src="assets/node-view.png">
             <img id="nodeImg2" src="assets/node-view2.png">
+
             <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
+            <a-asset-item id="arrow-red" src="assets/models/arrow-red.gltf"></a-asset-item>
+            <a-asset-item id="arrow-blue" src="assets/models/arrow-green.gltf"></a-asset-item>
+            <a-asset-item id="arrow-green" src="assets/models/arrow-blue.gltf"></a-asset-item>
+            <a-asset-item id="coin-red" src="assets/models/coin-red.gltf"></a-asset-item>
+            <a-asset-item id="pole-red" src="assets/models/pole-red.gltf"></a-asset-item>
+            <a-asset-item id="coin-blue" src="assets/models/coin-blue.gltf"></a-asset-item>
+            <a-asset-item id="pole-blue" src="assets/models/pole-blue.gltf"></a-asset-item>
+            <a-asset-item id="coin-green" src="assets/models/coin-green.gltf"></a-asset-item>
+            <a-asset-item id="pole-green" src="assets/models/pole-green.gltf"></a-asset-item>
+
             <audio id = "created" src="assets/audio/speech-created.m4a" preload></audio>
             <audio id = "geometry" src="assets/audio/speech-geometry.m4a" preload></audio>
             <audio id = "manipulation" src="assets/audio/speech-manipulate.m4a" preload></audio>

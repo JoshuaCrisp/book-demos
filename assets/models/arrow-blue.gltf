@@ -1,0 +1,262 @@
+{
+    "accessors": [
+        {
+            "bufferView": 0,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 107,
+            "max": [
+                63.37479782104492,
+                69.69843292236328,
+                543.4210205078125
+            ],
+            "min": [
+                -66.71800994873047,
+                -60.39437484741211,
+                0.0005922317504882812
+            ],
+            "name": "accessor_buffer_Cylinder_POSITION_0",
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 1,
+            "byteOffset": 0,
+            "componentType": 5126,
+            "count": 107,
+            "max": [
+                0.9238795638084412,
+                0.9238796234130859,
+                1.0
+            ],
+            "min": [
+                -0.9238794445991516,
+                -0.9238795042037964,
+                -1.0
+            ],
+            "name": "accessor_buffer_Cylinder_NORMAL_0",
+            "type": "VEC3"
+        },
+        {
+            "bufferView": 2,
+            "byteOffset": 0,
+            "componentType": 5123,
+            "count": 180,
+            "max": [
+                106
+            ],
+            "min": [
+                0
+            ],
+            "name": "accessor_buffer_Cylinder_0",
+            "type": "SCALAR"
+        }
+    ],
+    "asset": {
+        "version": "2.0"
+    },
+    "bufferViews": [
+        {
+            "buffer": 0,
+            "byteLength": 1284,
+            "byteOffset": 0,
+            "byteStride": 12,
+            "name": "bufferView_buffer_Cylinder_POSITION_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 1284,
+            "byteOffset": 1284,
+            "byteStride": 12,
+            "name": "bufferView_buffer_Cylinder_NORMAL_0",
+            "target": 34962
+        },
+        {
+            "buffer": 0,
+            "byteLength": 360,
+            "byteOffset": 2568,
+            "name": "bufferView_buffer_Cylinder_0",
+            "target": 34963
+        }
+    ],
+    "buffers": [
+        {
+            "byteLength": 2928,
+            "name": "buffer_arrow-blue",
+            "uri": "data:application/octet-stream;base64,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t/MHOjpepLrx/3+/rBe5vhVtXz+986c+GG1fP5oXub6986c+kISkOrsqCLrx/3+/bzcIujpepLrx/3+/Gu/Dvl2DbL8AAAAAbzcIujpepLrx/3+/SgoIOjtepDrx/3+/E+/DPmCDbD8AAAAAb1ekusEqCDrw/3+/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIA/nxe5vhdtX7+986c+kISkOrsqCLrx/3+/t/MHOjpepLrx/3+/Gu/Dvl2DbL8AAAAAbFekOrsqCDrx/3+/Fm1fv6QXuT7D86c+SQoIujhepDrx/3+/AAAAAAAAAAAAAIA/E+/DPl6DbL8AAAAAF21fP5oXuT6+86c+kRe5PhltX7/D86c+bFekOrsqCDrx/3+/kISkOrsqCLrx/3+/E+/DPl6DbL8AAAAAXYNsvxfvwz4AAAAAAAAAAAAAAAAAAIA/oRe5PhdtXz+986c+t/MHOjpepLrx/3+/X4NsPxbvw74AAAAAXYNsvxfvw74AAAAAF21fP5oXuT6+86c+oRe5PhdtXz+986c+Fu/Dvl2DbD8AAAAAAAAAAAAAAAAAAIC/XoNsPxPvwz4AAAAAXoNsPxPvwz4AAAAAGu/Dvl2DbL8AAAAAXoNsPxPvwz4AAAAAb1ekusEqCDrw/3+/XYNsvxfvwz4AAAAAAAAAAAAAAAAAAIC/E+/DPl6DbL8AAAAAGu/Dvl2DbL8AAAAAoRe5PhdtXz+986c+GG1fv50Xub6886c+SQoIujhepDrx/3+/GG1fP5oXub6986c+GG1fv50Xub6886c+rBe5vhVtXz+986c+Fm1fv6QXuT7D86c+GG1fv50Xub6886c+XoNsPxPvwz4AAAAAnxe5vhdtX7+986c+bFekOrsqCDrx/3+/X4NsPxbvw74AAAAASgoIOjtepDrx/3+/Fu/Dvl2DbD8AAAAAXYNsvxfvwz4AAAAAkRe5PhltX7/D86c+SgoIOjtepDrx/3+/bFekOrsqCDrx/3+/blekusAqCLrx/3+/IAAUAAIAIAACADMAUABgAFIAUABSAE8ASQATABwASQAcAGMAPwBWACEAPwAhAEQAVwAwADoAVwA6AFEAFwBKAAYAFwAGACkAPQASAFoAPQBaAAUARQARAFQARQBUAGYACgBlAAsACgALAE0ANQAYACUANQAlAE4ANQBOABYANQAWABsANQAbAFUANQBVAB0ACQAoAF4ACQBeADwAaAAyAB4AaAAeAGQAGgAuADgAGgA4AEMADgAnAGoADgBqACYASAAAADkASAA5ACsAIgBTABUAIgAVADQAaQBCAGIAaQBiADsAAwAvADEAAwAxAB8ANgA+AEYANgBGAD4ANgA+ADYANgA2AD4ANgA+AEYANgBGAD4ANwAQAA0ANwANAGEALQAqACQALQAkAFsAWABHAEwAWABMAAcAXQABACwAXQAsAAQACABcAF8ACABfAFkAIwBBAGcAIwBnAAwADwBLABkADwAZAEAA"
+        }
+    ],
+    "cameras": [
+        {
+            "name": "Camera",
+            "perspective": {
+                "aspectRatio": 1.703595982340029,
+                "yfov": 0.5033799409866333,
+                "zfar": 100.0,
+                "znear": 0.10000000149011612
+            },
+            "type": "perspective"
+        }
+    ],
+    "materials": [
+        {
+            "emissiveFactor": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "name": "blue",
+            "pbrMetallicRoughness": {
+                "baseColorFactor": [
+                    0.12826918065547943,
+                    0.15144748985767365,
+                    0.64000004529953,
+                    1.0
+                ],
+                "metallicFactor": 0.0,
+                "roughnessFactor": 1.0
+            }
+        }
+    ],
+    "meshes": [
+        {
+            "name": "Cylinder",
+            "primitives": [
+                {
+                    "attributes": {
+                        "NORMAL": 1,
+                        "POSITION": 0
+                    },
+                    "indices": 2,
+                    "material": 0,
+                    "mode": 4
+                }
+            ]
+        }
+    ],
+    "nodes": [
+        {
+            "camera": 0,
+            "name": "Camera",
+            "rotation": [
+                0.483536034822464,
+                0.20870360732078552,
+                0.33687159419059753,
+                0.7804827094078064
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                7.481131553649902,
+                -6.5076398849487305,
+                5.34366512298584
+            ]
+        },
+        {
+            "mesh": 0,
+            "name": "Cylinder",
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                0.006173519883304834,
+                0.006173519883304834,
+                0.006173519883304834
+            ],
+            "translation": [
+                0.0,
+                0.0,
+                0.0
+            ]
+        },
+        {
+            "name": "Lamp",
+            "rotation": [
+                0.16907575726509094,
+                0.27217137813568115,
+                0.7558802962303162,
+                0.570947527885437
+            ],
+            "scale": [
+                1.0,
+                0.9999999403953552,
+                1.0
+            ],
+            "translation": [
+                4.076245307922363,
+                1.0054539442062378,
+                5.903861999511719
+            ]
+        },
+        {
+            "name": "Point",
+            "rotation": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "translation": [
+                -1.8577862977981567,
+                0.41657310724258423,
+                1.00005304813385
+            ]
+        },
+        {
+            "children": [
+                3,
+                1,
+                2,
+                0
+            ],
+            "matrix": [
+                -1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ],
+            "name": "Scene_root"
+        }
+    ],
+    "scene": 0,
+    "scenes": [
+        {
+            "extras": {
+                "active_camera": 0,
+                "background_color": [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824
+                ],
+                "frames_per_second": 24
+            },
+            "name": "Scene",
+            "nodes": [
+                4
+            ]
+        }
+    ]
+}

@@ -5,17 +5,24 @@ AFRAME.registerComponent('geometry-button-caller', {
 
     init: function () {
         var el = this.el;
-        var data = this.data;
-        var jay = document.querySelector("#jayModel");
+
+        if(tutAdd){
+            tutAdd = false;
+            var jay = document.querySelector("#jayModel");
             jay.setAttribute('sound',"src: #add; autoplay: false;");
-            
             jay.components.sound.playSound();
+        }
+        
        
         var getButtons = function(){
-            jay.setAttribute('sound',"src: #geometry; autoplay: false;");
-            jay.setAttribute('animation-mixer','clip: talking;');
-            jay.components.sound.playSound();
-            console.log("added");
+
+            if(tutGeo){
+                tutGeo = false;
+                jay.setAttribute('sound',"src: #geometry; autoplay: false;");
+                jay.setAttribute('animation-mixer','clip: talking;');
+                jay.components.sound.playSound();
+            }
+            
             el.removeEventListener('mouseenter',getButtons);
             var geobtngrid = document.createElement('a-entity');
             geobtngrid.setAttribute('gridify-buttons',"class: geometry-button; btnCount: 5; btnWidth: 1;  columns: 2; btnHeight: 1; spacing: 0.1; url:assets/buttons/geometryBtns/; imagebase: geometryButton");

@@ -4,6 +4,7 @@ AFRAME.registerComponent('jay-caller', {
     },
 
     init: function () {
+        var scene = jay = document.querySelector('#scene');
         var el = this.el;
         var jay = document.querySelector('#jayModel');
         var btnText = document.querySelector('#btnText');
@@ -31,6 +32,7 @@ AFRAME.registerComponent('jay-caller', {
             fadeInObject.setAttribute('to','1');
             jay.appendChild(fadeInObject);
             el.removeEventListener('click', fadeIn);
+            
         }
 
         function selected(){
@@ -41,13 +43,20 @@ AFRAME.registerComponent('jay-caller', {
             el.setAttribute('scale', '1 1 1');
         }
 
+        function getPos(event){
+            currentXpos = event.clientX;
+            currentYpos = event.clientY;
+           
+        }
+
 
         jay.addEventListener('sound-ended', stopTalking);
         jay.addEventListener('sound-ended', getBtn);
         el.addEventListener('mouseenter', selected);
         el.addEventListener('mouseleave', unselected);
         el.addEventListener('click', fadeIn);
-        
+        document.addEventListener('mousemove',getPos);
+        document.addEventListener('click',getPos);
 
 
     },
@@ -71,6 +80,7 @@ AFRAME.registerComponent('jay-caller', {
             el.setAttribute('geometry-button-caller',{});
             addBtn.setAttribute('visible', false);
             el.removeAttribute('jay-caller');
+           //scene.removeChild(el);
         }
     }
 

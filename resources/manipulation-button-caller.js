@@ -9,18 +9,34 @@ AFRAME.registerComponent('manipulation-button-caller', {
         var jay = document.querySelector('#jayModel');
         var btns = document.querySelectorAll('.manipulation-buttons');
         var object = document.querySelector('.wireframe');
-        
+        var rotHandles = document.querySelector('.rotHandles');
+        var scaleHandles = document.querySelector('.scaleHandles');
+
+        var rotHandleImgX = document.querySelector('#rotHandleImgX');
+        var rotHandleImgY = document.querySelector('#rotHandleImgY');
+        var rotHandleImgZ = document.querySelector('#rotHandleImgZ');
+    
+        var handleImgX = document.querySelector('#handleImgX');
+        var handleImgY = document.querySelector('#handleImgY');
+        var handleImgZ = document.querySelector('#handleImgZ');
+
         if(tutManipulate){
             tutManipulate = false;
             jay.setAttribute('sound','src: #manipulation; autoplay: false;');
             jay.components.sound.playSound();
         }
        
-        var playRotate= function(){   
-            object.setAttribute('object-rotatable',{});
-            object.removeAttribute('object-scaleable');
-            object.removeAttribute('object-moveable');
-    
+        var playRotate= function(){
+            rotHandles.setAttribute('visible','true');
+            rotHandleImgX.setAttribute('drag-rotate-x',{});
+            rotHandleImgY.setAttribute('drag-rotate-y',{});
+            rotHandleImgZ.setAttribute('drag-rotate-z',{});
+
+            scaleHandles.setAttribute('visible','false');
+            handleImgX.removeAttribute('drag-scale-x');
+            handleImgY.removeAttribute('drag-scale-y');
+            handleImgZ.removeAttribute('drag-scale-z');
+
             if (tutRotate){
                 tutRotate = false;
                 jay.setAttribute('sound','src: #rotation; autoplay: false;');
@@ -29,11 +45,17 @@ AFRAME.registerComponent('manipulation-button-caller', {
         }
         
         var playScale= function(){
-            var node = document.querySelector('#node-portol');
+            scaleHandles.setAttribute('visible', true);
+            handleImgX.setAttribute('drag-scale-x',{});
+            handleImgY.setAttribute('drag-scale-y',{});
+            handleImgZ.setAttribute('drag-scale-z',{});
+
+            rotHandles.setAttribute('visible','false');
+            rotHandleImgX.removeAttribute('drag-rotate-x');
+            rotHandleImgY.removeAttribute('drag-rotate-y');
+            rotHandleImgZ.removeAttribute('drag-rotate-z');
+            rotHandles.setAttribute('visible','false');
             
-            object.removeAttribute('object-rotatable');
-            object.removeAttribute('object-moveable');
-            object.setAttribute('object-scaleable',{});
             
             if(tutScale){
                 tutScale = false;
@@ -46,6 +68,11 @@ AFRAME.registerComponent('manipulation-button-caller', {
             object.removeAttribute('object-rotatable');
             object.removeAttribute('object-scaleable');
             object.setAttribute('object-moveable',{});
+
+            rotHandleImgX.removeAttribute('drag-rotate-x');
+            rotHandleImgY.removeAttribute('drag-rotate-y');
+            rotHandleImgY.removeAttribute('drag-rotate-z');
+            rotHandles.setAttribute('visible','false');
 
             if(tutMove){
                 tutMove = false;

@@ -9,16 +9,34 @@ AFRAME.registerComponent('make-primitives', {
         var position = "0 -1 -3";
         var el = this.el;
         var id = el.getAttribute('id');
+        
         var container = document.createElement('a-entity');
-        container.setAttribute('position', position);
+        container.setAttribute('position', '0 -0.5 -3');
         container.setAttribute('class', 'container');
+
+        var mesh = document.createElement('a-entity');
+        mesh.setAttribute('position','0 1 0');
+        mesh.setAttribute('class','mesh');
+        
+        var scaleHandles = document.createElement('a-entity');
+        scaleHandles.setAttribute('class','scaleHandles');
+        scaleHandles.setAttribute('position','0 0 0');
+        scaleHandles.setAttribute('visible','false');
+
+        var rotHandles = document.createElement('a-entity');
+        rotHandles.setAttribute('class','rotHandles');
+        rotHandles.setAttribute('visible','false');
+
         scene.appendChild(container);
+        container.appendChild(mesh);
+        mesh.appendChild(scaleHandles);
+        mesh.appendChild(rotHandles);
 
         var zoom= document.createElement('a-animation');
         zoom.setAttribute('attribute','position');
         zoom.setAttribute('dur','500');
-        zoom.setAttribute('from','0 1 -30');
-        zoom.setAttribute('to','0 1 -0');
+        zoom.setAttribute('from','0 0 -30');
+        zoom.setAttribute('to','0 0 0');
 
         var fade= document.createElement('a-animation');
         fade.setAttribute('attribute','opacity');
@@ -30,12 +48,12 @@ AFRAME.registerComponent('make-primitives', {
             var existing = document.querySelector('.wireframe');
                 if(existing){existing.parentNode.removeChild(existing);} 
             var cube = document.createElement('a-box');
-            cube.setAttribute('position', '0 1 -20');
+            cube.setAttribute('position', '0 0 -20');
             cube.setAttribute('color', 'black');
             cube.setAttribute('opacity', '0');
             cube.setAttribute('wireframe', true);
             cube.setAttribute('class', 'wireframe');
-            container.appendChild(cube);
+            mesh.appendChild(cube);
             cube.appendChild(zoom);
             cube.appendChild(fade);
         }
@@ -46,14 +64,15 @@ AFRAME.registerComponent('make-primitives', {
                     existing.parentNode.removeChild(existing);
                 }
             var sphere = document.createElement('a-sphere');
-            sphere.setAttribute('position', '0 1 0');
+            sphere.setAttribute('position', '0 0 0');
             sphere.setAttribute('color', 'black');
             sphere.setAttribute('opacity', '0');
-            sphere.setAttribute('segments-height', '6');
+            sphere.setAttribute('segments-height', '12');
             sphere.setAttribute('segments-width', '12');
+            sphere.setAttribute('scale', '0.65 0.65 0.65');
             sphere.setAttribute('wireframe', true);
             sphere.setAttribute('class', 'wireframe');
-            container.appendChild(sphere);
+            mesh.appendChild(sphere);
             sphere.appendChild(zoom);
             sphere.appendChild(fade);
         }
@@ -66,12 +85,12 @@ AFRAME.registerComponent('make-primitives', {
             var cone = document.createElement('a-cone');
             cone.setAttribute('segments-height', '6');
             cone.setAttribute('segments-radial', '12');
-            cone.setAttribute('position', '0 1 0');
+            cone.setAttribute('position', '0 0 0');
             cone.setAttribute('color', 'black');
             cone.setAttribute('opacity', '0');
             cone.setAttribute('wireframe', true);
             cone.setAttribute('class', 'wireframe');
-            container.appendChild(cone);
+            mesh.appendChild(cone);
             cone.appendChild(zoom);
             cone.appendChild(fade);          
         }
@@ -82,15 +101,16 @@ AFRAME.registerComponent('make-primitives', {
                     existing.parentNode.removeChild(existing);
                 }
             var torus = document.createElement('a-torus');
-            torus.setAttribute('position', '0 1 0');
+            torus.setAttribute('position', '0 0 0');
             torus.setAttribute('segments-radial', 12);
             torus.setAttribute('segments-tubular', 8);
             torus.setAttribute('color', 'black');
-            torus.setAttribute('rotation', '90 0 0');
+            torus.setAttribute('rotation', '0 0 0');
             torus.setAttribute('opacity', '0');
+            torus.setAttribute('scale','0.5 0.5 0.5');
             torus.setAttribute('wireframe', true);
             torus.setAttribute('class', 'wireframe');
-            container.appendChild(torus);
+            mesh.appendChild(torus);
             torus.appendChild(zoom);
             torus.appendChild(fade);
         }
@@ -103,12 +123,13 @@ AFRAME.registerComponent('make-primitives', {
             var cylinder = document.createElement('a-cylinder');
             cylinder.setAttribute('segments-height', '6');
             cylinder.setAttribute('segments-radial', '12');
-            cylinder.setAttribute('position', '0 1 0');
+            cylinder.setAttribute('position', '0 0 0');
+            cylinder.setAttribute('scale', '0.6 1.2 0.6');
             cylinder.setAttribute('color', 'black');
             cylinder.setAttribute('opacity', '0');
             cylinder.setAttribute('wireframe', true);
             cylinder.setAttribute('class', 'wireframe');
-            container.appendChild(cylinder);
+            mesh.appendChild(cylinder);
             cylinder.appendChild(zoom);
             cylinder.appendChild(fade);
            
@@ -128,6 +149,84 @@ AFRAME.registerComponent('make-primitives', {
         b_2.removeEventListener('click', getMaterials);
         b_3.removeEventListener('click', getMaterials);
         b_4.removeEventListener('click', getMaterials);
+
+        var width = document.createElement('a-gltf-model'); 
+            width.setAttribute('src','#arrow-blue');
+            width.setAttribute('class', 'manipulator');
+            width.setAttribute('id', 'handleImgX');
+            width.setAttribute('position', '0.6 0 0');
+            width.setAttribute('rotation','0 0 -90');
+            width.setAttribute('scale','0.25 0.25 0.25');
+            scaleHandles.appendChild(width);
+
+            var height = document.createElement('a-gltf-model');
+            height.setAttribute('src','#arrow-green');
+            height.setAttribute('class', 'manipulator');
+            height.setAttribute('id', 'handleImgY');
+            height.setAttribute('position', '0 0.6 0');
+            height.setAttribute('scale','0.25 0.25 0.25');
+            scaleHandles.appendChild(height);
+
+            var depth = document.createElement('a-gltf-model');
+            depth.setAttribute('src','#arrow-red');
+            depth.setAttribute('class', 'manipulator');
+            depth.setAttribute('id', 'handleImgZ');
+            depth.setAttribute('position', '0 0 0.6');
+            depth.setAttribute('rotation','90 0 0');
+            depth.setAttribute('scale','0.25 0.25 0.25');
+            scaleHandles.appendChild(depth);
+
+            var xRot = document.createElement('a-gltf-model');
+            xRot.setAttribute('src','#coin-green');
+            xRot.setAttribute('class', 'manipulator');
+            xRot.setAttribute('id', 'rotHandleImgX');
+            xRot.setAttribute('position', '0.18 0 0');
+            xRot.setAttribute('rotation','0 0 -90');
+            xRot.setAttribute('scale','0.4 0.4 0.4');
+            rotHandles.appendChild(xRot);
+
+            var yRot = document.createElement('a-gltf-model');
+            yRot.setAttribute('src','#coin-blue');
+            yRot.setAttribute('class', 'manipulator');
+            yRot.setAttribute('id', 'rotHandleImgY');
+            yRot.setAttribute('position', '0 0.6 0');
+            yRot.setAttribute('scale','0.25 0.25 0.25');
+            rotHandles.appendChild(yRot);
+
+            var zRot = document.createElement('a-gltf-model');
+            zRot.setAttribute('src','#coin-red');
+            zRot.setAttribute('class', 'manipulator');
+            zRot.setAttribute('id', 'rotHandleImgZ');
+            zRot.setAttribute('position', '0 0 0.6');
+            zRot.setAttribute('rotation','90 0 0');
+            zRot.setAttribute('scale','0.25 0.25 0.25');
+            rotHandles.appendChild(zRot);
+
+            var xRotPole = document.createElement('a-gltf-model');
+            xRotPole.setAttribute('src','#pole-green');
+            xRotPole.setAttribute('class', 'manipulator');
+            xRotPole.setAttribute('id', 'rotPoleImgX');
+            xRotPole.setAttribute('position', '0.6 0 0');
+            xRotPole.setAttribute('rotation','0 0 -90');
+            xRotPole.setAttribute('scale','0.25 0.25 0.25');
+            rotHandles.appendChild(xRotPole);
+
+            var yRotPole = document.createElement('a-gltf-model');
+            yRotPole.setAttribute('src','#pole-blue');
+            yRotPole.setAttribute('class', 'manipulator');
+            yRotPole.setAttribute('id', 'rotPoleImgY');
+            yRotPole.setAttribute('position', '0 0.6 0');
+            yRotPole.setAttribute('scale','0.25 0.25 0.25');
+            rotHandles.appendChild(yRotPole);
+
+            var zRotPole = document.createElement('a-gltf-model');
+            zRotPole.setAttribute('src','#pole-red');
+            zRotPole.setAttribute('class', 'manipulator');
+            zRotPole.setAttribute('id', 'rotPoleImgZ');
+            zRotPole.setAttribute('position', '0 0 0.6');
+            zRotPole.setAttribute('rotation','90 0 0');
+            zRotPole.setAttribute('scale','0.25 0.25 0.25');
+            rotHandles.appendChild(zRotPole);
 
 
         var materialGrid = document.createElement('a-entity');
