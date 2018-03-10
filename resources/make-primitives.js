@@ -5,7 +5,6 @@ AFRAME.registerComponent('make-primitives', {
     init: function () {
 
         var scene = document.querySelector('#scene');
-        var origin = document.querySelector('#addBtn');
         var position = "0 -1 -3";
         var el = this.el;
         var id = el.getAttribute('id');
@@ -136,7 +135,6 @@ AFRAME.registerComponent('make-primitives', {
        }
 
        var getMaterials = function(){
-        origin.setAttribute('opacity', '0');
         el.removeAttribute('make-primitives');
         el.setAttribute('visible',false);
         b_0.removeEventListener('mouseenter', makeCube);

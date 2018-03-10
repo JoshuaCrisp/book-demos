@@ -5,6 +5,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
 
     init: function () {
         var el = this.el;
+        var scene = this.el.sceneEl;
         el.setAttribute('visible', true);
         var jay = document.querySelector('#jayModel');
         var btns = document.querySelectorAll('.manipulation-buttons');
@@ -37,6 +38,8 @@ AFRAME.registerComponent('manipulation-button-caller', {
             handleImgY.removeAttribute('drag-scale-y');
             handleImgZ.removeAttribute('drag-scale-z');
 
+            object.removeAttribute('object-moveable',{});
+
             if (tutRotate){
                 tutRotate = false;
                 jay.setAttribute('sound','src: #rotation; autoplay: false;');
@@ -55,6 +58,8 @@ AFRAME.registerComponent('manipulation-button-caller', {
             rotHandleImgY.removeAttribute('drag-rotate-y');
             rotHandleImgZ.removeAttribute('drag-rotate-z');
             rotHandles.setAttribute('visible','false');
+
+            object.removeAttribute('object-moveable',{});
             
             
             if(tutScale){
@@ -74,11 +79,52 @@ AFRAME.registerComponent('manipulation-button-caller', {
             rotHandleImgY.removeAttribute('drag-rotate-z');
             rotHandles.setAttribute('visible','false');
 
+            scaleHandles.setAttribute('visible', false);
+            handleImgX.removeAttribute('drag-scale-x');
+            handleImgY.removeAttribute('drag-scale-y');
+            handleImgZ.removeAttribute('drag-scale-z');
+            handleImgZ.removeAttribute('drag-scale-z');
+
             if(tutMove){
                 tutMove = false;
                 jay.setAttribute('sound','src: #placement-xz; autoplay: false;');
                 jay.components.sound.playSound();
             }
+        }
+
+        var created = function(){
+
+            var container = document.querySelector('.container');
+            container.setAttribute('class','container'+objectCount);
+
+            var mesh = document.querySelector('.mesh');
+            mesh.setAttribute('class','mesh'+objectCount);
+
+            var wireframe = document.querySelector('.wireframe');
+            wireframe.setAttribute('class','wireframe'+objectCount);
+
+            handleImgX.removeAttribute('drag-scale-x',{});
+            handleImgY.removeAttribute('drag-scale-y',{});
+            handleImgZ.removeAttribute('drag-scale-z',{});
+
+            rotHandleImgX.removeAttribute('drag-rotate-x');
+            rotHandleImgY.removeAttribute('drag-rotate-y');
+            rotHandleImgY.removeAttribute('drag-rotate-z');
+
+            object.removeAttribute('object-moveable',{});
+
+            scaleHandles.parentNode.removeChild(scaleHandles);
+            rotHandles.parentNode.removeChild(rotHandles);
+
+            objectCount +=1;
+            console.log(objectCount);
+
+            scene.setAttribute('add-button-caller',{});
+            console.log(scene);
+
+
+            el.removeAttribute('manipulation-button-caller');
+            scene.removeChild(el);
         }
 
          
@@ -91,6 +137,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
      btns[0].addEventListener('click', playScale);
      btns[1].addEventListener('click', playRotate);
      btns[2].addEventListener('click', playMove);
+     btns[3].addEventListener('click', created);
     }
 
    

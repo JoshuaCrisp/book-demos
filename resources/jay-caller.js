@@ -4,68 +4,37 @@ AFRAME.registerComponent('jay-caller', {
     },
 
     init: function () {
-        var scene = jay = document.querySelector('#scene');
-        var el = this.el;
-        var jay = document.querySelector('#jayModel');
-        var btnText = document.querySelector('#btnText');
+
+        this.el.sceneEl.removeAttribute('add-button-caller');
         
         var stopTalking =function(){
-            jay.setAttribute('animation-mixer','clip: idle;');
+            this.setAttribute('animation-mixer','clip: idle;');
         }
 
         var getBtn =function(){
-            
-            el.setAttribute('geometry-button-caller',{});
-            btnText.setAttribute('value', "click to create object");
-            el.setAttribute('visible','true');
-            jay.removeEventListener('sound-ended', getBtn);
-            el.removeAttribute('jay-caller');      
+            tutWelcome = false;
+            var scene = document.querySelector('#scene');
+            scene.setAttribute('add-button-caller',{});
+            this.removeEventListener('sound-ended', getBtn);     
         }
 
+        this.el.addEventListener('sound-ended', stopTalking);
+        this.el.addEventListener('sound-ended', getBtn);
 
-        var fadeIn = function(){
-            el.setAttribute('visible', false);
-            var fadeInObject= document.createElement('a-animation');
-            fadeInObject.setAttribute('attribute','model-opacity');
-            fadeInObject.setAttribute('dur','2000');
-            fadeInObject.setAttribute('from','0');
-            fadeInObject.setAttribute('to','1');
-            jay.appendChild(fadeInObject);
-            el.removeEventListener('click', fadeIn);
-            
-        }
-
-        function selected(){
-            el.setAttribute('scale', '1.2 1.2 1.2');
-        }
-
-        function unselected(){
-            el.setAttribute('scale', '1 1 1');
-        }
-
-        function getPos(event){
-            currentXpos = event.clientX;
-            currentYpos = event.clientY;
-           
-        }
-
-
-        jay.addEventListener('sound-ended', stopTalking);
-        jay.addEventListener('sound-ended', getBtn);
-        el.addEventListener('mouseenter', selected);
-        el.addEventListener('mouseleave', unselected);
-        el.addEventListener('click', fadeIn);
-        document.addEventListener('mousemove',getPos);
-        document.addEventListener('click',getPos);
+        var fadeInObject= document.createElement('a-animation');
+        fadeInObject.setAttribute('attribute','model-opacity');
+        fadeInObject.setAttribute('dur','2000');
+        fadeInObject.setAttribute('from','0');
+        fadeInObject.setAttribute('to','1');
+        this.el.appendChild(fadeInObject);
 
 
     },
 
     tick: function(){
-        var jay = document.querySelector('#jayModel');
-        var opacity = jay.getAttribute('model-opacity');
-        var el = this.el;
-        
+
+        var opacity = this.el.getAttribute('model-opacity');
+
         if(opacity >= 1){
             var walkObject= document.createElement('a-animation');
             walkObject.setAttribute('attribute','position');
@@ -74,13 +43,10 @@ AFRAME.registerComponent('jay-caller', {
             walkObject.setAttribute('from','-4 -1 -16');
             walkObject.setAttribute('to','-2 -1 -3');
             walkObject.setAttribute('delay','500');
-            jay.appendChild(walkObject);
-            jay.setAttribute('animation-mixer','clip: walk;');          
-            jay.components.sound.playSound();
-            el.setAttribute('geometry-button-caller',{});
-            addBtn.setAttribute('visible', false);
-            el.removeAttribute('jay-caller');
-           //scene.removeChild(el);
+            this.el.appendChild(walkObject);
+            this.el.setAttribute('animation-mixer','clip: walk;');          
+            this.el.components.sound.playSound();
+            this.el.removeAttribute('jay-caller');
         }
     }
 

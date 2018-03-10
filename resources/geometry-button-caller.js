@@ -5,6 +5,7 @@ AFRAME.registerComponent('geometry-button-caller', {
 
     init: function () {
         var el = this.el;
+        var scene = document.querySelector('#scene');
 
         if(tutAdd){
             tutAdd = false;
@@ -15,7 +16,7 @@ AFRAME.registerComponent('geometry-button-caller', {
         
        
         var getButtons = function(){
-
+            scene.removeAttribute('add-button-caller');
             if(tutGeo){
                 tutGeo = false;
                 jay.setAttribute('sound',"src: #geometry; autoplay: false;");
@@ -31,9 +32,6 @@ AFRAME.registerComponent('geometry-button-caller', {
             geobtngrid.setAttribute('scale','0.8 0.8 0.8');
             geobtngrid.setAttribute('make-primitives',{});
             scene.appendChild(geobtngrid);
-            var addBtn = document.querySelector('#addBtn');
-            addBtn.setAttribute('visible', false);
-            el.removeAttribute('geometry-button-caller');
         }
 
         el.addEventListener('click', getButtons); 

@@ -34,15 +34,13 @@ AFRAME.registerComponent('color-button-caller', {
             var colorGrid = document.querySelector('#colorGrid');
             var manBtns = document.createElement('a-entity');
             manBtns.setAttribute('gridify-buttons',"class: manipulation-buttons; btnCount: 4; btnWidth: 1;  columns: 4; btnHeight: 1; spacing: 0.2;  url:assets/buttons/manipulationBtns/; imagebase: manipulation-button" );
-            manBtns.setAttribute('position', " 3 -0.5 -2.2");
-            manBtns.setAttribute('rotation', "-30 -25 0");
+            manBtns.setAttribute('position', " 3.5 2 -3");
             manBtns.setAttribute('scale', "0.5 0.5 0.5");
-            manBtns.setAttribute('class', "button");
+            manBtns.setAttribute('class', "manButtonGrid");
             scene.appendChild(manBtns);
             manBtns.setAttribute('manipulation-button-caller',{});
             el.removeEventListener('mouseenter',colorOptions);
             el.removeEventListener('click',getManipulators);
-            el.setAttribute('visible', false);
             el.removeAttribute('color-button-caller');
             scene.removeChild(el);
             
