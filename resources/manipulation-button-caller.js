@@ -93,6 +93,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
         }
 
         var created = function(){
+            objectCount +=1;
 
             var container = document.querySelector('.container');
             container.setAttribute('class','container'+objectCount);
@@ -116,7 +117,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             scaleHandles.parentNode.removeChild(scaleHandles);
             rotHandles.parentNode.removeChild(rotHandles);
 
-            objectCount +=1;
+           
             console.log(objectCount);
 
             scene.setAttribute('add-button-caller',{});

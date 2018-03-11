@@ -6,13 +6,8 @@ AFRAME.registerComponent('geometry-button-caller', {
     init: function () {
         var el = this.el;
         var scene = document.querySelector('#scene');
+        var jay = document.querySelector("#jayModel");
 
-        if(tutAdd){
-            tutAdd = false;
-            var jay = document.querySelector("#jayModel");
-            jay.setAttribute('sound',"src: #add; autoplay: false;");
-            jay.components.sound.playSound();
-        }
         
        
         var getButtons = function(){
