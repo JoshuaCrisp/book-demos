@@ -7,7 +7,6 @@ AFRAME.registerComponent('drag-rotate-x',{
 
   init : function(){
     var handleImgX = document.querySelector('#rotHandleImgX');
-    var poleX = document.querySelector('#rotPoleImgX');
     var camera = document.querySelector('#camera');
     var wireframe = document.querySelector('#wireframe');
 
@@ -21,7 +20,6 @@ AFRAME.registerComponent('drag-rotate-x',{
   }
 
   var onMouseOver = function(){
-    poleX.setAttribute('visible', true);
     this.setAttribute('model-opacity', '1');
     }
 
@@ -59,7 +57,6 @@ AFRAME.registerComponent('drag-rotate-x',{
   
     init : function(){
       var handleImgY = document.querySelector('#rotHandleImgY');
-      var poleY = document.querySelector('#rotPoleImgY');
       var camera = document.querySelector('#camera');
       var wireframe = document.querySelector('#wireframe');
   
@@ -74,7 +71,6 @@ AFRAME.registerComponent('drag-rotate-x',{
     }
   
     var onMouseOver = function(){
-      poleY.setAttribute('visible', true);
       this.setAttribute('model-opacity', '1');
       }
   
@@ -112,7 +108,6 @@ AFRAME.registerComponent('drag-rotate-x',{
     
       init : function(){
         var handleImgZ = document.querySelector('#rotHandleImgZ');
-        var poleZ = document.querySelector('#rotPoleImgZ');
         var camera = document.querySelector('#camera');
         var wireframe = document.querySelector('#wireframe');
     
@@ -126,7 +121,6 @@ AFRAME.registerComponent('drag-rotate-x',{
       }
     
       var onMouseOver = function(){
-        poleZ.setAttribute('visible', true);
         this.setAttribute('model-opacity', '1');
         }
     

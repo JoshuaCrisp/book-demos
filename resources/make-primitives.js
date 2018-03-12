@@ -137,6 +137,8 @@ AFRAME.registerComponent('make-primitives', {
        var getMaterials = function(){
         el.removeAttribute('make-primitives');
         el.setAttribute('visible',false);
+
+        var wireframe = document.querySelector('.wireframe');
         b_0.removeEventListener('mouseenter', makeCube);
         b_1.removeEventListener('mouseenter', makeSphere);
         b_2.removeEventListener('mouseenter', makeCone);
@@ -180,6 +182,7 @@ AFRAME.registerComponent('make-primitives', {
             xRot.setAttribute('id', 'rotHandleImgX');
             xRot.setAttribute('position', '0.18 0 0');
             xRot.setAttribute('rotation','0 0 -90');
+            xRot.setAttribute('model-opacity','0.7');
             xRot.setAttribute('scale','0.4 0.4 0.4');
             rotHandles.appendChild(xRot);
 
@@ -188,6 +191,7 @@ AFRAME.registerComponent('make-primitives', {
             yRot.setAttribute('class', 'manipulator');
             yRot.setAttribute('id', 'rotHandleImgY');
             yRot.setAttribute('position', '0 0.6 0');
+            yRot.setAttribute('model-opacity','0.7');
             yRot.setAttribute('scale','0.25 0.25 0.25');
             rotHandles.appendChild(yRot);
 
@@ -197,43 +201,26 @@ AFRAME.registerComponent('make-primitives', {
             zRot.setAttribute('id', 'rotHandleImgZ');
             zRot.setAttribute('position', '0 0 0.6');
             zRot.setAttribute('rotation','90 0 0');
+            zRot.setAttribute('model-opacity','0.7');
             zRot.setAttribute('scale','0.25 0.25 0.25');
             rotHandles.appendChild(zRot);
-
-            var xRotPole = document.createElement('a-gltf-model');
-            xRotPole.setAttribute('src','#pole-green');
-            xRotPole.setAttribute('class', 'manipulator');
-            xRotPole.setAttribute('id', 'rotPoleImgX');
-            xRotPole.setAttribute('position', '0.6 0 0');
-            xRotPole.setAttribute('rotation','0 0 -90');
-            xRotPole.setAttribute('scale','0.25 0.25 0.25');
-            rotHandles.appendChild(xRotPole);
-
-            var yRotPole = document.createElement('a-gltf-model');
-            yRotPole.setAttribute('src','#pole-blue');
-            yRotPole.setAttribute('class', 'manipulator');
-            yRotPole.setAttribute('id', 'rotPoleImgY');
-            yRotPole.setAttribute('position', '0 0.6 0');
-            yRotPole.setAttribute('scale','0.25 0.25 0.25');
-            rotHandles.appendChild(yRotPole);
-
-            var zRotPole = document.createElement('a-gltf-model');
-            zRotPole.setAttribute('src','#pole-red');
-            zRotPole.setAttribute('class', 'manipulator');
-            zRotPole.setAttribute('id', 'rotPoleImgZ');
-            zRotPole.setAttribute('position', '0 0 0.6');
-            zRotPole.setAttribute('rotation','90 0 0');
-            zRotPole.setAttribute('scale','0.25 0.25 0.25');
-            rotHandles.appendChild(zRotPole);
-
 
         var materialGrid = document.createElement('a-entity');
         materialGrid.setAttribute('gridify-buttons',"class: color-picker-buttons; btnCount: 12; btnWidth: 1;  columns: 3; btnHeight: 1; spacing: 0.1; normals:true; url:assets/buttons/materialBtns/; imagebase: material");
         materialGrid.setAttribute('id',"colorGrid");
         materialGrid.setAttribute('class',"button");
-        materialGrid.setAttribute('position', "1 3 -3");
+        materialGrid.setAttribute('position', "1 3 -10");
         materialGrid.setAttribute('scale', "0.5 0.5 0.5");
+
+        var zoomIn = document.createElement('a-animation');
+            zoomIn.setAttribute('attribute', 'position');
+            zoomIn.setAttribute('from', '1 3 -10');
+            zoomIn.setAttribute('to', '1 3 -3');
+            zoomIn.setAttribute('dur', '500');
+
         scene.appendChild(materialGrid);
+        materialGrid.appendChild(zoomIn);
+
         materialGrid.setAttribute('color-button-caller', {});
         scene.removeChild(el);
        }

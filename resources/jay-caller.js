@@ -14,6 +14,7 @@ AFRAME.registerComponent('jay-caller', {
         var getBtn =function(){
             tutWelcome = false;
             var scene = document.querySelector('#scene');
+            scene.removeAttribute('audio-cue');
             scene.setAttribute('add-button-caller',{});
             this.removeEventListener('sound-ended', getBtn);     
         }
@@ -32,21 +33,18 @@ AFRAME.registerComponent('jay-caller', {
     },
 
     tick: function(){
+        var scene = document.querySelector('#scene');
 
         var opacity = this.el.getAttribute('model-opacity');
+        
 
         if(opacity >= 1){
-            var walkObject= document.createElement('a-animation');
-            walkObject.setAttribute('attribute','position');
-            walkObject.setAttribute('dur','16500');
-            walkObject.setAttribute('easing','linear');
-            walkObject.setAttribute('from','-4 -1 -16');
-            walkObject.setAttribute('to','-2 -1 -3');
-            walkObject.setAttribute('delay','500');
-            this.el.appendChild(walkObject);
-            this.el.setAttribute('animation-mixer','clip: walk;');          
+            
+            var scene = document.querySelector('#scene');         
             this.el.components.sound.playSound();
             this.el.removeAttribute('jay-caller');
+            scene.setAttribute('audio-cue',{});
+
         }
     }
 

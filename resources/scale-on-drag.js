@@ -9,7 +9,6 @@ AFRAME.registerComponent('drag-scale-x',{
     var scaleHandles = document.querySelector('.scaleHandles')
     var handleImgX = document.querySelector('#handleImgX');
     var rotHandleImgX = document.querySelector('#rotHandleImgX');
-    var poleX = document.querySelector('#rotPoleImgX');
     var wireframe = document.querySelector('.wireframe');
 
     handleImgX.setAttribute('model-opacity', 0.5);
@@ -44,7 +43,6 @@ AFRAME.registerComponent('drag-scale-x',{
     if(this.data.mousedown){
       var handleImgX = document.querySelector('#handleImgX');
       var rotHandleImgX = document.querySelector('#rotHandleImgX');
-      var poleX = document.querySelector('#rotPoleImgX');
       var wireframe = document.querySelector('.wireframe');
       var arrowPos = handleImgX.getAttribute('position');
       currentScale = wireframe.getAttribute('scale');
@@ -52,7 +50,6 @@ AFRAME.registerComponent('drag-scale-x',{
       handleImgX.setAttribute('position', {x:arrowPos.x + ((temp_x*this.data.speed/1000)/2), y: arrowPos.y, z: arrowPos.z});
       wireframe.setAttribute('scale', {x: currentScale.x + (temp_x*this.data.speed/1000), y: currentScale.y, z: currentScale.z});
       rotHandleImgX.setAttribute('position', {x:arrowPos.x + ((temp_x*this.data.speed/1000)/2), y: arrowPos.y, z: arrowPos.z});
-      poleX.setAttribute('position', {x:arrowPos.x + ((temp_x*this.data.speed/1000)/2), y: arrowPos.y, z: arrowPos.z});
       handleImgX.setAttribute('drag-scale-x',{mousedown:true, x_cord: currentXpos});
     }
   }
@@ -70,7 +67,6 @@ AFRAME.registerComponent('drag-scale-y',{
     var scaleHandles = document.querySelector('.scaleHandles')
     var handleImgY = document.querySelector('#handleImgY');
     var rotHandleImgY = document.querySelector('#rotHandleImgY');
-    var poleY = document.querySelector('#rotPoleImgY');
     var wireframe = document.querySelector('.wireframe');
 
     handleImgY.setAttribute('model-opacity', 0.5);
@@ -105,7 +101,6 @@ AFRAME.registerComponent('drag-scale-y',{
     if(this.data.mousedown){
       var handleImgY = document.querySelector('#handleImgY');
       var rotHandleImgY = document.querySelector('#rotHandleImgY');
-      var poleY = document.querySelector('#rotPoleImgY');
       var wireframe = document.querySelector('.wireframe');
       var arrowPos = handleImgY.getAttribute('position');
       currentScale = wireframe.getAttribute('scale');
@@ -115,7 +110,6 @@ AFRAME.registerComponent('drag-scale-y',{
       wireframe.setAttribute('scale', {x: currentScale.x, y: currentScale.y - (temp_y*this.data.speed/1000), z: currentScale.z});
       wireframe.setAttribute('position', {x: currentPos.x, y: currentPos.y - (temp_y*this.data.speed/1000)/2, z: currentPos.z});
       rotHandleImgY.setAttribute('position', {x:arrowPos.x, y: arrowPos.y - (temp_y*this.data.speed/1000), z: arrowPos.z});
-      poleY.setAttribute('position', {x:arrowPos.x, y: arrowPos.y  - ((temp_y*this.data.speed/1000)), z: arrowPos.z});
       handleImgY.setAttribute('drag-scale-y',{mousedown:true, y_cord: currentYpos});
     }
   }
@@ -133,7 +127,6 @@ AFRAME.registerComponent('drag-scale-z',{
     var scaleHandles = document.querySelector('.scaleHandles')
     var handleImgZ = document.querySelector('#handleImgZ');
     var rotHandleImgZ = document.querySelector('#rotHandleImgZ');
-    var poleZ = document.querySelector('#rotPoleImgZ');
     var wireframe = document.querySelector('.wireframe');
 
     handleImgZ.setAttribute('model-opacity', 0.5);
@@ -168,7 +161,6 @@ AFRAME.registerComponent('drag-scale-z',{
     if(this.data.mousedown){
       var handleImgZ = document.querySelector('#handleImgZ');
       var rotHandleImgZ = document.querySelector('#rotHandleImgZ');
-      var poleZ = document.querySelector('#rotPoleImgZ');
       var wireframe = document.querySelector('.wireframe');
       var arrowPos = handleImgZ.getAttribute('position');
       currentScale = wireframe.getAttribute('scale');
@@ -177,7 +169,6 @@ AFRAME.registerComponent('drag-scale-z',{
       handleImgZ.setAttribute('position', {x:arrowPos.x, y: arrowPos.y, z: arrowPos.z + ((temp_y*this.data.speed/1000)/2)});
       wireframe.setAttribute('scale', {x: currentScale.x, y: currentScale.y, z: currentScale.z  + (temp_y*this.data.speed/1000)});
       rotHandleImgZ.setAttribute('position', {x:arrowPos.x, y: arrowPos.y, z: arrowPos.z  + ((temp_y*this.data.speed/1000)/2)});
-      poleZ.setAttribute('position', {x:arrowPos.x, y: arrowPos.y, z: arrowPos.z  + ((temp_y*this.data.speed/1000)/2)});
       handleImgZ.setAttribute('drag-scale-z',{mousedown:true, y_cord: currentYpos});
     }
   }

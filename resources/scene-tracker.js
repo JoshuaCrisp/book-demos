@@ -11,7 +11,10 @@ var tutMove = true;
 var tutMove2 = true;
 var tutCreated= true;
 
-var objectCount = 0;
+var objectCount = 2;
 
 var currentXpos = 0;
 var currentYpos = 0;
+
+var objectXpos = -6.5;
+var objectYpos = 4;

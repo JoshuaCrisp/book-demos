@@ -70,8 +70,6 @@ AFRAME.registerComponent('manipulation-button-caller', {
         }
 
         var playMove= function(){          
-            object.removeAttribute('object-rotatable');
-            object.removeAttribute('object-scaleable');
             object.setAttribute('object-moveable',{});
 
             rotHandleImgX.removeAttribute('drag-rotate-x');
@@ -94,6 +92,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
 
         var created = function(){
             objectCount +=1;
+            object.removeAttribute('object-moveable');
 
             var container = document.querySelector('.container');
             container.setAttribute('class','container'+objectCount);
@@ -101,6 +100,9 @@ AFRAME.registerComponent('manipulation-button-caller', {
             var mesh = document.querySelector('.mesh');
             mesh.setAttribute('class','mesh'+objectCount);
 
+            var manButtonGrid = document.querySelector('.manButtonGrid');
+            manButtonGrid.parentNode.removeChild(manButtonGrid);
+            
             var wireframe = document.querySelector('.wireframe');
             wireframe.setAttribute('class','wireframe'+objectCount);
 
@@ -112,22 +114,80 @@ AFRAME.registerComponent('manipulation-button-caller', {
             rotHandleImgY.removeAttribute('drag-rotate-y');
             rotHandleImgY.removeAttribute('drag-rotate-z');
 
-            object.removeAttribute('object-moveable',{});
-
             scaleHandles.parentNode.removeChild(scaleHandles);
             rotHandles.parentNode.removeChild(rotHandles);
 
-           
-            console.log(objectCount);
+            var graph = document.querySelector('#scene-graph');
+
+            var scenegraph = object.cloneNode();
+            scenegraph.setAttribute('material', wireframe.getAttribute('material'));
+            console.log(scenegraph);
+            graph.appendChild(scenegraph);
+            scenegraph.setAttribute('position',
+            {x: objectXpos, y: objectYpos, z: 0});
+            objectXpos += 3;
+            if (objectXpos >= 14){
+                objectXpos = -14
+                objectYpos -=4;
+            }
+
+
+
+            if(tutCreated){
+                tutCreated = false;
+                jay.setAttribute('sound','src: #created; autoplay: false;');
+                jay.components.sound.playSound();
+                jay.addEventListener('sound-ended',walkAway);
+            } else {
+                scene.setAttribute('add-button-caller',{});
+                el.removeAttribute('manipulation-button-caller');
+                scene.removeChild(el);
+            }
+        }
+
+        var idle = function(){
+            jay.setAttribute('animation-mixer','clip: idle;');
+        }
+
+        var walkAway = function(){
+
+            jay.setAttribute('animation-mixer','clip: walk;');
+
+            var walkObject= document.createElement('a-animation');
+            walkObject.setAttribute('attribute','position');
+            walkObject.setAttribute('dur','6000');
+            walkObject.setAttribute('easing','linear');
+            walkObject.setAttribute('from','-2 -1 -4');
+            walkObject.setAttribute('to','-5 -1 -4');
+            walkObject.setAttribute('delay','1000');
+
+            var turnObject= document.createElement('a-animation');
+            turnObject.setAttribute('attribute','rotation');
+            turnObject.setAttribute('dur','1500');
+            turnObject.setAttribute('easing','linear');
+            turnObject.setAttribute('from','0 30 0');
+            turnObject.setAttribute('to','0 -55 0');
+
+            var turnBackObject= document.createElement('a-animation');
+            turnBackObject.setAttribute('attribute','rotation');
+            turnBackObject.setAttribute('dur','2000');
+            turnBackObject.setAttribute('easing','linear');
+            turnBackObject.setAttribute('from','0 -55 0');
+            turnBackObject.setAttribute('to','0 45 0');
+            turnBackObject.setAttribute('delay','6000');
+
+            
+            jay.appendChild(turnObject);
+            jay.appendChild(walkObject);
+            jay.appendChild(turnBackObject);
+            setTimeout(idle, 8000);
+
+            jay.removeEventListener('sound-ended',walkAway);
 
             scene.setAttribute('add-button-caller',{});
-            console.log(scene);
-
-
             el.removeAttribute('manipulation-button-caller');
             scene.removeChild(el);
         }
-
          
          var yHandle = document.querySelector('#handleImgy');
          var zHandle = document.querySelector('#handleImgz');

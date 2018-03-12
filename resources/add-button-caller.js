@@ -44,13 +44,15 @@ AFRAME.registerComponent('add-button-caller', {
             doneBtn.setAttribute('transparency','true');
             doneBtn.setAttribute('alphaTest','0.20');
             doneBtn.setAttribute('position','0.6 1 -5');
+            
             this.el.appendChild(doneBtn);
+
 
             addBtn.addEventListener('mouseenter', selected);
             addBtn.addEventListener('mouseleave', unselected);
-
             doneBtn.addEventListener('mouseenter', selected);
             doneBtn.addEventListener('mouseleave', unselected);
+            doneBtn.addEventListener('click', doneClick);
 
         }
 
@@ -60,6 +62,10 @@ AFRAME.registerComponent('add-button-caller', {
 
         function unselected(){
             this.setAttribute('scale', '1 1 1');
+        }
+
+        function doneClick(){
+            doneBtn.setAttribute('done-button',{});
         }
 
     },
@@ -79,6 +85,7 @@ AFRAME.registerComponent('add-button-caller', {
         var doneButton = document.querySelector('#doneButton');
 
         if(doneButton){
+            doneButton.removeAttribute('done-button');
             this.el.removeChild(doneButton);
         }
         

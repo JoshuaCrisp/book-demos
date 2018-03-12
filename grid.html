@@ -19,6 +19,8 @@
     <script src ="resources/object-moveable.js"></script>
     <script src ="resources/scale-on-drag.js"></script>
     <script src ="resources/rotate-on-drag.js"></script>
+    <script src ="resources/audio-cue.js"></script>
+    <script src ="resources/done-button.js"></script>
     <!--<script src ="resources/object-created.js"></script>-->
     <script src ="resources/scene-tracker.js"></script>
 
@@ -28,27 +30,26 @@
 
       
 
-    <a-scene id="scene" add-button-caller>
+    <a-scene cursor="rayOrigin: mouse" id="scene" add-button-caller>
 
         <a-assets>
+            <img id="sutherland" src="assets/sutherland.jpg">
+            <img id="damocles" src="assets/sword-of-damocles.jpg">
             <img id="gridSquare-white" src="assets/textures/gridSquare.png">
             <img id="gridSquare-red" src="assets/textures/gridSquare-red.png">
             <img id="addGeoBtn" src="assets/buttons/addGeoButton.png">
             <img id="doneBtn" src="assets/buttons/done-button.png">
             <img id="handles-bg-png" src="assets/buttons/handles/handleBG.png">
             <img id="nodeImg" src="assets/node-view.png">
-            <img id="nodeImg2" src="assets/node-view2.png">
 
             <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
             <a-asset-item id="arrow-red" src="assets/models/arrow-red.gltf"></a-asset-item>
             <a-asset-item id="arrow-blue" src="assets/models/arrow-green.gltf"></a-asset-item>
             <a-asset-item id="arrow-green" src="assets/models/arrow-blue.gltf"></a-asset-item>
             <a-asset-item id="coin-red" src="assets/models/coin-red.gltf"></a-asset-item>
-            <a-asset-item id="pole-red" src="assets/models/pole-red.gltf"></a-asset-item>
             <a-asset-item id="coin-blue" src="assets/models/coin-blue.gltf"></a-asset-item>
-            <a-asset-item id="pole-blue" src="assets/models/pole-blue.gltf"></a-asset-item>
             <a-asset-item id="coin-green" src="assets/models/coin-green.gltf"></a-asset-item>
-            <a-asset-item id="pole-green" src="assets/models/pole-green.gltf"></a-asset-item>
+            <a-asset-item id="camcorder" src="assets/models/camcorder.gltf"></a-asset-item>
 
             <audio id = "created" src="assets/audio/speech-created.m4a" preload></audio>
             <audio id = "geometry" src="assets/audio/speech-geometry.m4a" preload></audio>
@@ -59,14 +60,16 @@
             <audio id = "rotation" src="assets/audio/speech-rotation.m4a" preload></audio>
             <audio id = "scale" src="assets/audio/speech-scale.m4a" preload></audio>
             <audio id = "welcome" src="assets/audio/speech-welcome.m4a" preload></audio>
+            <audio id = "done" src="assets/audio/speech-scenegraph.m4a" preload></audio>
+
+
             
           </a-assets>
 
-      <a-camera id = "camera"> 
+      <a-entity look-controls id = "camera"> 
          
 
-        <a-cursor 
-                  raycaster="far: 100; ">
+       <!-- <a-cursor rayOrigin = "mouse" raycaster="far: 100;">
 
                   <a-animation begin="click"
                                easing="ease-in"
@@ -76,24 +79,36 @@
                                to="1 1 1">
                   </a-animation>
 
-        </a-cursor>
+        </a-cursor> -->
 
-      </a-camera>
+      </a-entity>
+
+
 
       <a-sky color = "#ffffff"></a-sky>
-      <a-entity id="floor" class = "button" gridify-plane = "height: 1; width:1; rows:40; columns:40; src: #gridSquare-white;" rotation = "-90 0 0" position = "0 -1 0"></a-entity>
       
       <a-gltf-model src="#JayBolter-gltf"
         id ="jayModel"
         model-opacity= "0"
         scale = "1.5 1.5 1.5"
-        position="-4 -1 -16"
+        position="-6 -1 -16"
         rotation = "0 30 0"
         animation-mixer="clip: idle; crossFadeDuration:1;"
-        sound="src:#welcome; autoplay: false">
+        sound="src: #welcome; autoplay: false">
       </a-gltf-model>
 
-    </a-scene>
+      <a-plane id = "scene-graph" src="#nodeImg" height = "18" width = "32" position = "0 9.5 -18" visible="false">
+          <a-gltf-model src="#JayBolter-gltf" id ="graph-jay" scale = "1.5 1.5 1.5" position="-13 2 0"></a-gltf-model>
+          <a-gltf-model src="#camcorder" id ="graph-camcorder" scale = "1.5 1.5 1.5" position="-9.5 4 0" rotation = "0 -90 0"></a-gltf-model> 
+      </a-plane>
 
+      <a-gltf-model src="#camcorder" id ="scene-camcorder" scale = "1.5 1.5 1.5" position="0.14 1.26 0" model-opacity= "0" visible ="false"></a-gltf-model>
+
+      <a-entity id="floor" class = "button" gridify-plane = "height: 1; width:1; rows:40; columns:40; src: #gridSquare-white;" rotation = "-90 0 0" position = "0 -1 0"></a-entity>
+
+
+
+    </a-scene>
+    
   </body>
 </html>
