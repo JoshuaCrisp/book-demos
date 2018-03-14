@@ -6,7 +6,7 @@ AFRAME.registerComponent('add-button-caller', {
         var addBtn = document.createElement('a-plane');
         addBtn.setAttribute('id','addBtn');
         addBtn.setAttribute('src','#addGeoBtn');
-        addBtn.setAttribute('transparency','true');
+        addBtn.setAttribute('transparent','true');
         addBtn.setAttribute('alphaTest','0.20');
 
         if(objectCount == 0){
@@ -41,7 +41,7 @@ AFRAME.registerComponent('add-button-caller', {
             var doneBtn = document.createElement('a-plane');
             doneBtn.setAttribute('id','doneButton');
             doneBtn.setAttribute('src','#doneBtn');
-            doneBtn.setAttribute('transparency','true');
+            doneBtn.setAttribute('transparent','true');
             doneBtn.setAttribute('alphaTest','0.20');
             doneBtn.setAttribute('position','0.6 1 -5');
             

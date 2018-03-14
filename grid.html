@@ -33,14 +33,21 @@
     <a-scene cursor="rayOrigin: mouse" id="scene" add-button-caller>
 
         <a-assets>
-            <img id="sutherland" src="assets/sutherland.jpg">
-            <img id="damocles" src="assets/sword-of-damocles.jpg">
+            <img id="sutherland" src="assets/sutherland.png">
+            <img id="damocles" src="assets/sword-of-damocles.png">
             <img id="gridSquare-white" src="assets/textures/gridSquare.png">
             <img id="gridSquare-red" src="assets/textures/gridSquare-red.png">
             <img id="addGeoBtn" src="assets/buttons/addGeoButton.png">
             <img id="doneBtn" src="assets/buttons/done-button.png">
             <img id="handles-bg-png" src="assets/buttons/handles/handleBG.png">
             <img id="nodeImg" src="assets/node-view.png">
+            <img id="triangles" src="assets/0-triangles.png">
+            <img id="plato" src="assets/1-Plato.png">
+            <img id="solid" src="assets/2-platonic-solids.png">
+            <img id="animal" src="assets/3-animal.png">
+
+            
+            
 
             <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
             <a-asset-item id="arrow-red" src="assets/models/arrow-red.gltf"></a-asset-item>
@@ -61,26 +68,14 @@
             <audio id = "scale" src="assets/audio/speech-scale.m4a" preload></audio>
             <audio id = "welcome" src="assets/audio/speech-welcome.m4a" preload></audio>
             <audio id = "done" src="assets/audio/speech-scenegraph.m4a" preload></audio>
+            <audio id = "notyet" src="assets/audio/speech-notyet.m4a" preload></audio>
 
 
             
           </a-assets>
 
-      <a-entity look-controls id = "camera"> 
-         
-
-       <!-- <a-cursor rayOrigin = "mouse" raycaster="far: 100;">
-
-                  <a-animation begin="click"
-                               easing="ease-in"
-                               attribute="scale" dur="150"
-                               fill="forwards"
-                               from="0.1 0.1 0.1"
-                               to="1 1 1">
-                  </a-animation>
-
-        </a-cursor> -->
-
+      <a-entity id = "camera"> 
+        <a-camera></a-camera>
       </a-entity>
 
 
@@ -94,7 +89,7 @@
         position="-6 -1 -16"
         rotation = "0 30 0"
         animation-mixer="clip: idle; crossFadeDuration:1;"
-        sound="src: #welcome; autoplay: false">
+        sound="src: #welcome; autoplay: false; refDistance: 10;">
       </a-gltf-model>
 
       <a-plane id = "scene-graph" src="#nodeImg" height = "18" width = "32" position = "0 9.5 -18" visible="false">

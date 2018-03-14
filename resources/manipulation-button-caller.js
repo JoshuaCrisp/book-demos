@@ -13,7 +13,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
         var rotHandles = document.querySelector('.rotHandles');
         var scaleHandles = document.querySelector('.scaleHandles');
 
-        var rotHandleImgX = document.querySelector('#rotHandleImgX');
+        var rotHandleImgX = document.querySelector('#rotHandleImgX'); 
         var rotHandleImgY = document.querySelector('#rotHandleImgY');
         var rotHandleImgZ = document.querySelector('#rotHandleImgZ');
     
@@ -91,17 +91,23 @@ AFRAME.registerComponent('manipulation-button-caller', {
         }
 
         var created = function(){
+
+            var container = document.querySelector('.container');
+            if(container.getAttribute('position') == "0 -0.5 -3"){
+                jay.setAttribute('sound','src: #notyet; autoplay: false;');
+                jay.components.sound.playSound();
+            } else{
             objectCount +=1;
             object.removeAttribute('object-moveable');
 
-            var container = document.querySelector('.container');
+            
             container.setAttribute('class','container'+objectCount);
 
             var mesh = document.querySelector('.mesh');
             mesh.setAttribute('class','mesh'+objectCount);
 
             var manButtonGrid = document.querySelector('.manButtonGrid');
-            manButtonGrid.parentNode.removeChild(manButtonGrid);
+            
             
             var wireframe = document.querySelector('.wireframe');
             wireframe.setAttribute('class','wireframe'+objectCount);
@@ -140,10 +146,12 @@ AFRAME.registerComponent('manipulation-button-caller', {
                 jay.addEventListener('sound-ended',walkAway);
             } else {
                 scene.setAttribute('add-button-caller',{});
-                el.removeAttribute('manipulation-button-caller');
+                manButtonGrid.removeAttribute('manipulation-button-caller');
+                manButtonGrid.parentNode.removeChild(manButtonGrid);
                 scene.removeChild(el);
             }
         }
+    }
 
         var idle = function(){
             jay.setAttribute('animation-mixer','clip: idle;');
@@ -185,7 +193,8 @@ AFRAME.registerComponent('manipulation-button-caller', {
             jay.removeEventListener('sound-ended',walkAway);
 
             scene.setAttribute('add-button-caller',{});
-            el.removeAttribute('manipulation-button-caller');
+            manButtonGrid.removeAttribute('manipulation-button-caller');
+            manButtonGrid.parentNode.removeChild(manButtonGrid);
             scene.removeChild(el);
         }
          

@@ -93,6 +93,13 @@ AFRAME.registerComponent('object-moveable', {
 
         }
         
+    },
+
+    remove: function(){
+        var wireframe = document.querySelector('.wireframe');
+        wireframe.removeEventListener('mousedown',onmousedown);
+        wireframe.removeEventListener('mouseup',onmouseup);
+
     }
 
          

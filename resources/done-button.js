@@ -24,8 +24,8 @@ AFRAME.registerComponent('done-button', {
 
             var moveback = document.createElement('a-animation');
             moveback.setAttribute('attribute','position');
-            moveback.setAttribute('from','0 1.6 0');
-            moveback.setAttribute('to','0 4 9');
+            moveback.setAttribute('from','0 0 0');
+            moveback.setAttribute('to','0 2 5');
             moveback.setAttribute('dur','1000');
 
             var camVisible = document.createElement('a-animation');

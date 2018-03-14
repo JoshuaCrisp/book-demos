@@ -7,6 +7,7 @@ AFRAME.registerComponent('geometry-button-caller', {
         var el = this.el;
         var scene = document.querySelector('#scene');
         var jay = document.querySelector("#jayModel");
+        jay.removeAttribute('audio-cues');
 
         
        
