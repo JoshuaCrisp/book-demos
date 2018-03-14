@@ -30,11 +30,13 @@ AFRAME.registerComponent('audio-cue',{
         setTimeout(idle, 70000)
         setTimeout(platoImage, 73000);
         setTimeout(talking2, 75000);
-        setTimeout(idle, 78000);
-        setTimeout(solidImage, 80000);
+        setTimeout(idle, 80000);
+        setTimeout(solidImage, 76000);
         setTimeout(talking, 83000);
+        setTimeout(fadeOut, 86000);
         setTimeout(idle, 88000);
         setTimeout(animalImage, 90000);
+        setTimeout(fadeIn, 90000);
         setTimeout(talking, 100000);
         setTimeout(fadeOut, 103000);
         setTimeout(removeImage, 103000);

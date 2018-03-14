@@ -9,6 +9,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
         el.setAttribute('visible', true);
         var jay = document.querySelector('#jayModel');
         var btns = document.querySelectorAll('.manipulation-buttons');
+        var manButtonGrid = document.querySelector('.manButtonGrid');
         var object = document.querySelector('.wireframe');
         var rotHandles = document.querySelector('.rotHandles');
         var scaleHandles = document.querySelector('.scaleHandles');
@@ -38,7 +39,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             handleImgY.removeAttribute('drag-scale-y');
             handleImgZ.removeAttribute('drag-scale-z');
 
-            object.removeAttribute('object-moveable',{});
+            object.removeAttribute('object-moveable');
 
             if (tutRotate){
                 tutRotate = false;
@@ -59,7 +60,7 @@ AFRAME.registerComponent('manipulation-button-caller', {
             rotHandleImgZ.removeAttribute('drag-rotate-z');
             rotHandles.setAttribute('visible','false');
 
-            object.removeAttribute('object-moveable',{});
+            object.removeAttribute('object-moveable');
             
             
             if(tutScale){
@@ -92,8 +93,22 @@ AFRAME.registerComponent('manipulation-button-caller', {
 
         var created = function(){
 
+            rotHandleImgX.removeAttribute('drag-rotate-x');
+            rotHandleImgY.removeAttribute('drag-rotate-y');
+            rotHandleImgY.removeAttribute('drag-rotate-z');
+            rotHandles.setAttribute('visible','false');
+
+            scaleHandles.setAttribute('visible', false);
+            handleImgX.removeAttribute('drag-scale-x');
+            handleImgY.removeAttribute('drag-scale-y');
+            handleImgZ.removeAttribute('drag-scale-z');
+            handleImgZ.removeAttribute('drag-scale-z');
+
+            object.removeAttribute('object-moveable');
+
             var container = document.querySelector('.container');
-            if(container.getAttribute('position') == "0 -0.5 -3"){
+            var containerPos = container.getAttribute('position');
+            if(containerPos.x == 0 && containerPos.y == -0.5 && containerPos.z == -3){
                 jay.setAttribute('sound','src: #notyet; autoplay: false;');
                 jay.components.sound.playSound();
             } else{
@@ -106,7 +121,8 @@ AFRAME.registerComponent('manipulation-button-caller', {
             var mesh = document.querySelector('.mesh');
             mesh.setAttribute('class','mesh'+objectCount);
 
-            var manButtonGrid = document.querySelector('.manButtonGrid');
+            
+            manButtonGrid.parentNode.removeChild(manButtonGrid);
             
             
             var wireframe = document.querySelector('.wireframe');
@@ -146,9 +162,6 @@ AFRAME.registerComponent('manipulation-button-caller', {
                 jay.addEventListener('sound-ended',walkAway);
             } else {
                 scene.setAttribute('add-button-caller',{});
-                manButtonGrid.removeAttribute('manipulation-button-caller');
-                manButtonGrid.parentNode.removeChild(manButtonGrid);
-                scene.removeChild(el);
             }
         }
     }
@@ -193,9 +206,6 @@ AFRAME.registerComponent('manipulation-button-caller', {
             jay.removeEventListener('sound-ended',walkAway);
 
             scene.setAttribute('add-button-caller',{});
-            manButtonGrid.removeAttribute('manipulation-button-caller');
-            manButtonGrid.parentNode.removeChild(manButtonGrid);
-            scene.removeChild(el);
         }
          
          var yHandle = document.querySelector('#handleImgy');

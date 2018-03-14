@@ -64,7 +64,7 @@ AFRAME.registerComponent('object-moveable', {
             (function(){
                 gridSquares[i].addEventListener('mouseenter', selected);
                 gridSquares[i].addEventListener('mouseleave', unselected);
-                gridSquares[i].addEventListener('mouseup', placedXZ);
+                gridSquares[i].addEventListener('click', placedXZ);
                 
             }());
         } 
