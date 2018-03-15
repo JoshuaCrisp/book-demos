@@ -18,13 +18,15 @@
       
       <!--The Theatre, people, video, and sky panorama-->
       <a-assets>
-        <a-asset-item id="JayBolter-gltf" src="assets/models/Maria.gltf"></a-asset-item>
+        <a-asset-item id="maria-gltf" src="assets/models/Maria.gltf"></a-asset-item>
         <a-asset-item id="chair-obj" src="assets/models/chair.obj"></a-asset-item>
         <a-asset-item id="chairs-obj" src="assets/models/TheatreChairs.obj"></a-asset-item>
         <a-asset-item id="people-obj" src="assets/models/theatrePeople.obj"></a-asset-item>
         <a-asset-item id="proscenium-obj" src="assets/models/theatreProscenium.obj"></a-asset-item>
         <a-asset-item id="room-obj" src="assets/models/theatreRoom.obj"></a-asset-item>
-        <video id="train-video" src="assets/train-video_Maria.mp4" playsinline></video>   
+        <video id="train-video" src="assets/train-video_Maria.mp4" playsinline>
+          <track kind="subtitles" label="English subtitles" src="assets/trainTrack.vtt" srclang="en" default></track>
+        </video>   
         <img id="prosceniumMap" src="assets/textures/prosceniumDiffuseColor.jpg" />
         <img id="roomMap" src="assets/textures/theatreRoomDiffuseColor.png" />
         <img id="chairMap" src="assets/textures/chairDiffuseColor.png" />
@@ -65,169 +67,42 @@
 
         <a-entity obj-model="obj: #objectBoiler" material="src:#boilerColor; normalMap:#boilerBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #boilerAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
         <a-entity id ="trainStand" obj-model="obj: #objectStand" material="src:#standMap; transparent: true; opacity: 0;" visible = "false" shadow="cast: false, receive: true" position = "0 2 0">
-          <a-animation
-            attribute="material.opacity"
-            delay="108000"
-            dur = "2000"
-            to="1"
-            begin= "standAppear">
-          </a-animation>
-          <a-animation
-          attribute="visible"
-          delay="108000"
-          to="true"
-          begin= "standVisible">
-        </a-animation>
+          
+          
         </a-entity>
         <!-- Train animation -->
-        <a-animation
-        attribute="position"
-         delay="60000"
-         dur = "1200"
-         easing="ease-out"
-         to="4.32 -9 -42"
-         begin= "trainStart"
-       ></a-animation>
-      <a-animation
-      attribute="rotation"
-       delay="105000"
-       dur = "5000"
-       to="4 0 0"
-       begin= "trainAR"
-     ></a-animation> 
+        
+     
      
         </a-entity>
 
       <!--The theater box itself goes invisible on the "theaterGone" signal --> 
       <a-entity id="theaterworld" position="0 0 0" referenceframe='parent: ar.user; userotation: false'>
         <a-entity id ="room" obj-model="obj: #room-obj" material="src:#roomMap; transparent: true; opacity: 1;" shadow="cast: false, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
-            <a-animation attribute="material.opacity" delay="105000" dur= "5000" to= "0" begin= "roomFadeOut"> </a-animation>  
         </a-entity>
         <a-entity id ="proscenium" obj-model="obj: #proscenium-obj" material="src:#prosceniumMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1.040 1 1" position="6.810 -17 -5">
-            <a-animation attribute="material.opacity" delay="105000" dur = "5000" to= "0"begin= "prosceniumFadeOut"></a-animation>      
         </a-entity>          
         <a-entity id ="chairs" obj-model="obj: #chairs-obj" material="src:#chairMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
-            <a-animation attribute="material.opacity" delay="105000" dur= "5000" to= "0" begin= "chairsFadeOut"> </a-animation>          
         </a-entity> 
         <a-entity id ="people" obj-model="obj: #people-obj" material="src:#peopleMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
-            <a-animation attribute="material.opacity" delay="105000" dur= "5000" to= "0" begin= "peopleFadeOut"> </a-animation>   
         </a-entity>
-        <a-gltf-model src="#JayBolter-gltf" id ="jayModel" opacity="true" scale="160 160 160" position="-7.65 -13.7 -3.48" rotation="0 150 0"animation-mixer="clip: sitTalk;">  
-          <a-animation
-             attribute="position"
-             id="standUpPosition"
-             easing = "ease-in"
-             delay="2000"
-             from="-5.394 -15.290 -40.253"
-             to="-2.5 -15.5 -48.5"
-             dur="2000"
-             begin= "getUpFromChair"
-           ></a-animation>
-           <a-animation
-             attribute="rotation"
-             id="standUpRotation"
-             easing = "ease-in"
-             delay="2000"
-             from="0 150 0"
-             to="0 59 0"
-             dur="2000"
-             begin= "getUpFromChair"
-           ></a-animation>
-           <a-animation
-             attribute="position"
-             id="turn1Position"
-             easing = "linear"
-             delay="4000"
-             from="-2.5 -15.5 -48.5"
-             to="2 -15.5 -45"
-             dur="2000"
-             begin= "turnAround"
-           ></a-animation>
-           <a-animation
-             attribute="rotation"
-             id="turn1Rotation"
-             easing = "linear"
-             delay="4000"
-             from="0 59 0"
-             to="0 27.5 0"
-             dur="2000"
-             begin= "turnAround"
-           ></a-animation>
-           <a-animation
-             attribute="position"
-             id="goToCarpetPosition"
-             easing = "linear"
-             delay="6000"
-             from="2 -15.5 -45"
-             to="2.6 -15.5 -39"
-             dur="2000"
-             begin= "goToCarpet"
-           ></a-animation>
-           <a-animation
-             attribute="rotation"
-             id="goToCarpetRotation"
-             easing = "linear"
-             delay="6000"
-             from="0 27.5 0"
-             to="0 -14 0"
-             dur="2000"
-             begin= "goToCarpet"
-           ></a-animation>
-           <a-animation
-             attribute="position"
-             id="walkToChair2Position"
-             easing = "linear"
-             delay="8000"
-             from="2.6 -15.5 -39"
-             to="-11 -15.5 -15"
-             dur="8000"
-             begin= "walkToChair2"
-           ></a-animation>
-           <a-animation
-             attribute="position"
-             id="rotateToEnterRowRotation"
-             easing = "ease-in"
-             delay="18600"
-             from="-11 -15.5 -15"
-             to="-12.34 -15.5 -11.88"
-             dur="2000"
-             begin= "rotateToEnterRow"
-           ></a-animation>
-           <a-animation
-             attribute="rotation"
-             id="rotateToEnterRowRotation"
-             easing = "ease-in"
-             delay="18600"
-             from="0 -14 0"
-             to="0 150 0"
-             dur="2000"
-             begin= "rotateToEnterRow"
-           ></a-animation>
-           <a-animation
-             attribute="position"
-             id="enterRow"
-             easing = "ease-in"
-             delay="22600"
-             from="-12.34 -15.5 -11.88"
-             to="-5.155 -15.5 -7.152"
-             dur="2000"
-             begin= "rotateToEnterRow"
-           ></a-animation>
+        <a-gltf-model src="#maria-gltf" id ="maria" opacity="true" scale="160 160 160" position="-7.65 -13.7 -3.48" rotation="0 150 0"animation-mixer="clip: crossLegs;">  
+          
+           
+           
+           
+           
+           
+           
+           
+           
           
            
         </a-gltf-model>
       
         <a-video id ="video" src="#train-video" width="57.6" height="32.4" rotation="0 -30 0" position="35 7 -50" visible="false" opacity = "1">
-            <a-animation attribute="visible" id="makeVisible" delay="15000"to="true" begin= "makeVisible"></a-animation>
-            <a-animation attribute="opacity" id="fadeVideoOut" delay="105000"to="0" begin= "fadeVideoOut"></a-animation>
         </a-video>
-	    <a-animation
-		       attribute="visible"
-         	  id="theaterGone"
-            delay="114000"
-			      to="false"
-            begin= "theaterGone"
-          ></a-animation> 
+	    
       </a-entity>
     
       
@@ -251,22 +126,7 @@
                       data-aframe-default-light="true"
                       aframe-injected="false"
                       rotation="0 148.4 0">
-                          <a-animation
-                          attribute="light.intensity"
-                          id="spotLightsDown"
-                          delay = 12000
-                          dur = 7000
-                          to="0.2"
-                          begin= "spotLightsDown"
-                          ></a-animation>
-                          <a-animation
-                          attribute="light.intensity"
-                          id="spotLightsUp"
-                          delay = 60000
-                          dur = 3000
-                          to="1.5"
-                          begin= "spotLightsUp"
-                          ></a-animation>
+                          
       </a-entity>
       <a-entity light="intensity:1;
                       color:#BBB;
@@ -278,21 +138,7 @@
                       visible="true"
                       data-aframe-default-light=""
                       aframe-injected="">
-                        <a-animation
-                        attribute="light.intensity"
-                        id="houseLightsDown"
-                        delay = 12000
-                        dur = 7000
-                        to="0.4"
-                        begin= "houseLightsDown"
-                        ></a-animation><a-animation
-                        attribute="light.intensity"
-                        id="houseLightsUp"
-                        delay = 60000
-                        dur = 3000
-                        to="0.7"
-                        begin= "houseLightsUp"
-                        ></a-animation>
+                        
       </a-entity>
      
 	  
@@ -303,21 +149,10 @@
     <script>
 
      /* var arScene = document.querySelector('ar-scene'); */
-      var jay = document.querySelector("#jayModel");
-      var train = document.querySelector("#train");
-      var content = document.querySelector('#theaterworld');
-      var room = document.querySelector('#room');
-      var proscenium = document.querySelector('#proscenium');
-      var chairs = document.querySelector('#chairs');
-      var people = document.querySelector('#people');
-      var spotLights = document.querySelector('#spotLight');
-      var houseLights = document.querySelector('#houseLight')
-      var stand = document.querySelector('#trainStand')
-      var videoElement = document.querySelector("#train-video");
-      var vidContainer = document.getElementById("#video");
+     
 
-    //  document.querySelector("#jayModel").addEventListener("startWalking", function(){
-   // document.querySelector("#jayModel").setAttribute("animation-mixer", "clip: sitToStand; loop: once;")
+    //  document.querySelector("#maria").addEventListener("startWalking", function(){
+   // document.querySelector("#maria").setAttribute("animation-mixer", "clip: sitToStand; loop: once;")
 //});
 
       var menu = document.getElementById('menu');
@@ -326,27 +161,87 @@
       menu.appendChild(button);
       button.addEventListener('click', function () {
           videoElement.play();
-          jay.emit("getUpFromChair");
-          jay.emit("turnAround");
-          jay.emit("goToCarpet");
-          jay.emit("walkToChair2");
-          jay.emit("rotateToEnterRow");
-          video.emit('makeVisible');
-          train.emit('trainStart');
-          train.emit('trainAR');
-          stand.emit('standAppear');
-          stand.emit('standVisible');
-		      content.emit('theaterGone');
-          spotLights.emit('spotLightsDown');
-          spotLights.emit('spotLightsUp');
-          houseLights.emit('houseLightsDown');
-          houseLights.emit('houseLightsUp');
-          room.emit('roomFadeOut');
-          proscenium.emit('prosceniumFadeOut');
-          chairs.emit('chairsFadeOut');
-          people.emit('peopleFadeOut');
-          video.emit('fadeVideoOut');
+          
       });
     </script>
+
+<script>
+  var videoElement = document.querySelector("video");
+  var textTracks = videoElement.textTracks; // one for each track element
+  var textTrack = textTracks[0]; // corresponds to the first track element
+  console.log(textTrack);
+  var kind = textTrack.kind // e.g. "subtitles"
+  var mode = textTrack.mode // e.g. "disabled", hidden" or "showing"
+  var myScene = document.querySelector('a-scene');
+  
+  /*
+  textTrack.oncuechange = function (){
+    // "this" is a textTrack
+    var cue = this.activeCues[0]; // assuming there is only one active cue
+    resetCues();
+    
+  }*/
+  
+  var trackElements = document.querySelectorAll("track");
+  // for each track element
+  for (var i = 0; i < trackElements.length; i++) {
+    trackElements[i].addEventListener("load", function() {
+      var textTrack = this.track; // gotcha: "this" is an HTMLTrackElement, not a TextTrack object
+      // for each cue
+      for (var j = 0; j < textTrack.cues.length; ++j) {
+        var cue = textTrack.cues[j];
+        // do something
+        resetCues(cue);
+      }
+    });
+  }
+  
+  function resetCues(myCue) {
+  // do something
+    myCue.onenter = function(){
+//create an array of all the text, slpitting it whenever there is a "/"
+var myobj = textTracks[0].activeCues[0].text.replace(/\n/g, "").split("/");
+            console.log(myobj)
+            // Adding three to i by defualt so that we can pass through the sets
+            for( var i = 0; i< myobj.length; i+=4){
+              //The pattern will always be the same. selector/attribute/value/(optionally)duration/
+                selector = document.getElementById(myobj[i]);
+                console.log(selector);
+                var attribute = myobj[i+1];
+                console.log(attribute);
+                var value = myobj[i+2];
+                console.log(value);
+                var duration = parseInt(myobj[i+3]);
+                console.log(duration);
+                //If i+3 is number, then it must be the duration
+                if(duration != 0000){ 
+                  var tween = document.createElement('a-animation');
+                  tween.setAttribute('attribute', attribute);
+                  tween.setAttribute('to',value);
+                  tween.setAttribute('dur',duration);
+                  selector.appendChild(tween);
+                  //adding 1 to i to jump to the next set of information
+                } 
+                 //If i+3 is not a number, then it must be the beginning of a different selector set, meaning no duration
+                else {selector.setAttribute(attribute,value)}
+        
+            }
+            
+            
+    };
+
+    myCue.onexit = function(){
+          // do something else
+          var myContent = document.getElementById('content');
+          myContent.parentNode.removeChild(myContent);
+    };
+    
+  }
+  
+  
+  
+  
+</script>
+
   </body>
 </html>
