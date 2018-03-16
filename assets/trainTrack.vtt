@@ -1,54 +1,69 @@
 WEBVTT FILE
 00:00:04.000 --> 00:00:05.000
-maria/animation-mixer/clip: sitTalk;/0000
-
+maria/animation-mixer/clip: sitTalk; crossFadeDuration:1;/0000
 
 00:00:12.000 --> 00:00:13.000
 houseLight/light.intensity/0.2/7000/
 spotLight/light.intensity/0.4/7000
 
-
-00:00:15.000 --> 00:00:16.000
+00:00:16.100 --> 00:00:18.000
 maria/animation-mixer/clip: sitPoint;/0000/
 video/visible/true/0000
 
-00:00:19.000 --> 00:00:20.000
+00:00:18.100 --> 00:00:21.000
+maria/animation-mixer/clip: crossLegs;/0000/
+
+00:00:21.000 --> 00:00:22.000
 maria/animation-mixer/clip: standup;/0000/
 maria/position/-7.61 -15.2 -6.21/800
 
-00:00:21.000 --> 00:00:22.000
+00:00:23.000 --> 00:00:24.000
 maria/animation-mixer/clip: strafe;/0000/
 maria/position/-14.2 -15.2 -12.7/2000
 
-
-00:00:23.000 --> 00:00:24.000
+00:00:25.000 --> 00:00:26.000
 maria/animation-mixer/clip: walk;/0000/
 maria/position/2.896 -15.2 -43.8/6000
 
-
-00:00:30.000 --> 00:00:31.000
+00:00:29.000 --> 00:00:31.000
 maria/animation-mixer/clip: idle;/0000
 
+00:00:41.000 --> 00:00:46.000
+maria/animation-mixer/clip: talking2;/0000
+
+00:00:47.000 --> 00:00:48.000
+maria/rotation/0 0 0/2000/
+maria/animation-mixer/clip: walk;/0000
+
+00:00:49.000 --> 00:00:51.000
+maria/animation-mixer/clip: talking2;/0000
+
+00:00:55.500 --> 00:00:57.000
+maria/animation-mixer/clip: walk;/0000/
+maria/position/-11.5 -15.2 -17.3/4500
+
+00:00:58.700 --> 00:00:59.700
+train/position/4.32 -9 -42/1000/
+
+00:00:59.800 --> 00:01:00.000
+maria/rotation/0 45 0/1000/
+maria/animation-mixer/clip: talking2;/0000
 
 00:01:00.000 --> 00:01:01.000
-houseLight/light.intensity/0.7/3000/
-spotLight/light.intensity/1.5/3000/
-train/position/4.32 -9 -42/1200
-
+houseLight/light.intensity/0.7/1000/
+spotLight/light.intensity/1.5/1000
 
 00:01:45.000 --> 00:01:47.000
-video/opacity/0/5000/0000/
+maria/animation-mixer/clip: idle;/0000/
+
+00:01:51.000 --> 00:01:52.000
+trainStand/visible/true/0000/
+trainStand/material.opacity/1/2000/
+video/opacity/0/5000/
 room/material.opacity/0/5000/
 proscenium/material.opacity/0/5000/
 chairs/material.opacity/0/5000/
 people/material.opacity/0/5000/
-train/rotation/4 0 0/5000
-
-
-00:01:48.000 --> 00:01:49.000
-trainStand/visible/true/0000/
-trainStand/material.opacity/1/2000
-
-
-00:01:50.000 --> 00:01:51.000
-theatreWorld/visible/false/0000
+train/rotation/4 0 0/5000/
+maria/scale/300 300 300 /5000/
+maria/position/-19.6 -31.2 -17.3/5000/

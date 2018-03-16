@@ -24,23 +24,23 @@
         <a-asset-item id="people-obj" src="assets/models/theatrePeople.obj"></a-asset-item>
         <a-asset-item id="proscenium-obj" src="assets/models/theatreProscenium.obj"></a-asset-item>
         <a-asset-item id="room-obj" src="assets/models/theatreRoom.obj"></a-asset-item>
+
         <video id="train-video" src="assets/train-video_Maria.mp4" playsinline>
           <track kind="subtitles" label="English subtitles" src="assets/trainTrack.vtt" srclang="en" default></track>
-        </video>   
+        </video>
+
         <img id="prosceniumMap" src="assets/textures/prosceniumDiffuseColor.jpg" />
         <img id="roomMap" src="assets/textures/theatreRoomDiffuseColor.png" />
         <img id="chairMap" src="assets/textures/chairDiffuseColor.png" />
         <img id="peopleMap" src="assets/textures/peopleDiffuseColor.png" />
-        <img id="trainyardPano" src="assets/malmo.jpg">
-      </a-assets>
-
-      <!--The Train model (including stand) in parts -->
-      <a-assets>
+        <img id="malmoPano" src="assets/malmo.jpg">
+      
         <a-asset-item id="objectWheels" src="assets/models/trainWheels.obj"></a-asset-item>
         <a-asset-item id="objectCab" src="assets/models/trainCab.obj"></a-asset-item>
         <a-asset-item id="objectBase" src="assets/models/trainBase.obj"></a-asset-item>
         <a-asset-item id="objectBoiler" src="assets/models/trainBoiler.obj"></a-asset-item>
         <a-asset-item id="objectStand" src="assets/models/trainStand.obj"></a-asset-item>
+
         <img id="wheelColor" src="assets/textures/WheelsCapTexture_baseColor.jpg" />
         <img id="wheelBmp" src="assets/textures/WheelsCapTexture_normal.png" />
         <img id="wheelAO" src="assets/textures/WheelsCapTexture_occ.jpg" />
@@ -54,59 +54,31 @@
         <img id="standMap" src="assets/textures/trainStandDiffuseColor.png" />
       </a-assets>
 
-      <a-sky src="#trainyardPano"></a-sky>
+      <a-sky src="#malmoPano"></a-sky>
 
-      <a-camera position = '0 -0.9 0'></a-camera>
+      <a-entity camera look-controls position = "0 -0.33 0"></a-entity>
 
       <!-- Using the asset management system. -->
       <a-entity id="train" visible="true" shadow="cast: true, receive: true" rotation="4 -55 0" scale="1.5 1.5 1.5" position="43 0 -85">
         <a-entity obj-model="obj: #objectWheels" material="src:#wheelColor; normalMap:#wheelBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #wheelAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
         <a-entity obj-model="obj: #objectCab" material="src:#wheelColor; normalMap:#wheelBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #wheelAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
-
         <a-entity obj-model="obj: #objectBase" material="src:#lightsColor; normalMap:#lightsBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #lightsAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
-
         <a-entity obj-model="obj: #objectBoiler" material="src:#boilerColor; normalMap:#boilerBmp; roughness: 0.5; metalness: 0.8; ambientOcclusionMap: #boilerAO; ambientOcclusionMapIntensity: 1.0; sphericalEnvMap: #reflectMap" shadow="cast: true, receive: true"></a-entity>
-        <a-entity id ="trainStand" obj-model="obj: #objectStand" material="src:#standMap; transparent: true; opacity: 0;" visible = "false" shadow="cast: false, receive: true" position = "0 2 0">
-          
-          
-        </a-entity>
-        <!-- Train animation -->
-        
-     
-     
-        </a-entity>
+        <a-entity id ="trainStand" obj-model="obj: #objectStand" material="src:#standMap; transparent: true; opacity: 0;" visible = "false" shadow="cast: false, receive: true" position = "0 2 0"></a-entity>
+      </a-entity>
 
       <!--The theater box itself goes invisible on the "theaterGone" signal --> 
       <a-entity id="theaterworld" position="0 0 0" referenceframe='parent: ar.user; userotation: false'>
-        <a-entity id ="room" obj-model="obj: #room-obj" material="src:#roomMap; transparent: true; opacity: 1;" shadow="cast: false, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
-        </a-entity>
-        <a-entity id ="proscenium" obj-model="obj: #proscenium-obj" material="src:#prosceniumMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1.040 1 1" position="6.810 -17 -5">
-        </a-entity>          
-        <a-entity id ="chairs" obj-model="obj: #chairs-obj" material="src:#chairMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
-        </a-entity> 
-        <a-entity id ="people" obj-model="obj: #people-obj" material="src:#peopleMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5">
-        </a-entity>
-        <a-gltf-model src="#maria-gltf" id ="maria" opacity="true" scale="160 160 160" position="-7.65 -13.7 -3.48" rotation="0 150 0"animation-mixer="clip: crossLegs;">  
-          
-           
-           
-           
-           
-           
-           
-           
-           
-          
-           
-        </a-gltf-model>
-      
-        <a-video id ="video" src="#train-video" width="57.6" height="32.4" rotation="0 -30 0" position="35 7 -50" visible="false" opacity = "1">
-        </a-video>
-	    
+        <a-entity id ="room" obj-model="obj: #room-obj" material="src:#roomMap; transparent: true; opacity: 1;" shadow="cast: false, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5"></a-entity>
+        <a-entity id ="proscenium" obj-model="obj: #proscenium-obj" material="src:#prosceniumMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1.040 1 1" position="6.810 -17 -5"></a-entity>          
+        <a-entity id ="chairs" obj-model="obj: #chairs-obj" material="src:#chairMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5"></a-entity> 
+        <a-entity id ="people" obj-model="obj: #people-obj" material="src:#peopleMap; transparent: true; opacity: 1;" shadow="cast: true, receive: true" rotation="-90 -30 0" scale="1 1 1" position="7 -17 -5"></a-entity>
+        <a-gltf-model src="#maria-gltf" id ="maria" opacity="true" scale="160 160 160" position="-7.65 -13.7 -3.48" rotation="0 150 0"animation-mixer="clip: crossLegs;"></a-gltf-model>
+        <a-video id ="video" src="#train-video" width="57.6" height="32.4" rotation="0 -30 0" position="35 7 -50" visible="false" opacity = "1"></a-video>
       </a-entity>
     
       
-      <!--Lights -->
+      <!--Lights  -->
       <a-entity light="shadowMapWidth:1024;
                       shadowMapHeight:1024;
                       shadowCameraNear:0.02;
@@ -139,68 +111,29 @@
                       data-aframe-default-light=""
                       aframe-injected="">
                         
-      </a-entity>
+      </a-entity> 
      
 	  
     </a-scene>
 
+<script>
 
-
-    <script>
-
-     /* var arScene = document.querySelector('ar-scene'); */
-     
-
-    //  document.querySelector("#maria").addEventListener("startWalking", function(){
-   // document.querySelector("#maria").setAttribute("animation-mixer", "clip: sitToStand; loop: once;")
-//});
-
-      var menu = document.getElementById('menu');
+  var menu = document.getElementById('menu');
       var button = document.createElement('button');
       button.textContent = "Begin" ;
       menu.appendChild(button);
-      button.addEventListener('click', function () {
-          videoElement.play();
-          
-      });
-    </script>
-
-<script>
+      button.addEventListener('click', function (){videoElement.play();});
   var videoElement = document.querySelector("video");
   var textTracks = videoElement.textTracks; // one for each track element
   var textTrack = textTracks[0]; // corresponds to the first track element
-  console.log(textTrack);
+  console.log("This is the text track: " + textTrack);
   var kind = textTrack.kind // e.g. "subtitles"
   var mode = textTrack.mode // e.g. "disabled", hidden" or "showing"
-  var myScene = document.querySelector('a-scene');
   
-  /*
+  
   textTrack.oncuechange = function (){
-    // "this" is a textTrack
-    var cue = this.activeCues[0]; // assuming there is only one active cue
-    resetCues();
-    
-  }*/
-  
-  var trackElements = document.querySelectorAll("track");
-  // for each track element
-  for (var i = 0; i < trackElements.length; i++) {
-    trackElements[i].addEventListener("load", function() {
-      var textTrack = this.track; // gotcha: "this" is an HTMLTrackElement, not a TextTrack object
-      // for each cue
-      for (var j = 0; j < textTrack.cues.length; ++j) {
-        var cue = textTrack.cues[j];
-        // do something
-        resetCues(cue);
-      }
-    });
-  }
-  
-  function resetCues(myCue) {
-  // do something
-    myCue.onenter = function(){
-//create an array of all the text, slpitting it whenever there is a "/"
-var myobj = textTracks[0].activeCues[0].text.replace(/\n/g, "").split("/");
+
+    var myobj = this.activeCues[0].text.replace(/\n/g, "").split("/");
             console.log(myobj)
             // Adding three to i by defualt so that we can pass through the sets
             for( var i = 0; i< myobj.length; i+=4){
@@ -217,6 +150,7 @@ var myobj = textTracks[0].activeCues[0].text.replace(/\n/g, "").split("/");
                 if(duration != 0000){ 
                   var tween = document.createElement('a-animation');
                   tween.setAttribute('attribute', attribute);
+                  tween.setAttribute('easing', 'linear');
                   tween.setAttribute('to',value);
                   tween.setAttribute('dur',duration);
                   selector.appendChild(tween);
@@ -226,17 +160,10 @@ var myobj = textTracks[0].activeCues[0].text.replace(/\n/g, "").split("/");
                 else {selector.setAttribute(attribute,value)}
         
             }
-            
-            
-    };
-
-    myCue.onexit = function(){
-          // do something else
-          var myContent = document.getElementById('content');
-          myContent.parentNode.removeChild(myContent);
-    };
     
   }
+  
+  
   
   
   
