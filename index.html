@@ -18,7 +18,7 @@
       
       <!--The Theatre, people, video, and sky panorama-->
       <a-assets>
-        <a-asset-item id="maria-gltf" src="assets/models/Maria.gltf"></a-asset-item>
+        <a-asset-item id="maria-gltf" src="assets/models/maria.gltf"></a-asset-item>
         <a-asset-item id="chair-obj" src="assets/models/chair.obj"></a-asset-item>
         <a-asset-item id="chairs-obj" src="assets/models/TheatreChairs.obj"></a-asset-item>
         <a-asset-item id="people-obj" src="assets/models/theatrePeople.obj"></a-asset-item>
@@ -33,7 +33,7 @@
         <img id="roomMap" src="assets/textures/theatreRoomDiffuseColor.png" />
         <img id="chairMap" src="assets/textures/chairDiffuseColor.png" />
         <img id="peopleMap" src="assets/textures/peopleDiffuseColor.png" />
-        <img id="malmoPano" src="assets/malmo.jpg">
+        <img id="malmoPano" src="assets/malmo2.jpg">
       
         <a-asset-item id="objectWheels" src="assets/models/trainWheels.obj"></a-asset-item>
         <a-asset-item id="objectCab" src="assets/models/trainCab.obj"></a-asset-item>
@@ -54,9 +54,9 @@
         <img id="standMap" src="assets/textures/trainStandDiffuseColor.png" />
       </a-assets>
 
-      <a-sky src="#malmoPano"></a-sky>
+      <a-sphere material="src:#malmoPano; side:back;" scale = "400 400 400" ></a-sphere>
 
-      <a-entity camera look-controls position = "0 -0.33 0"></a-entity>
+      <a-entity id = "camera" position = "-2 -1.5 1.6 "rotation = "0 -29.2 0"><a-camera look-controls></a-camera></a-entity>
 
       <!-- Using the asset management system. -->
       <a-entity id="train" visible="true" shadow="cast: true, receive: true" rotation="4 -55 0" scale="1.5 1.5 1.5" position="43 0 -85">
