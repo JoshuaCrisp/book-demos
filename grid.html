@@ -22,6 +22,8 @@
     <script src ="resources/rotate-on-drag.js"></script>
     <script src ="resources/audio-cue.js"></script>
     <script src ="resources/done-button.js"></script>
+
+    <!-- This file contains the global variables referenced throughout many of the other .js files -->
     <script src ="resources/scene-tracker.js"></script>
 
   </head>
@@ -29,10 +31,12 @@
   <body>
 
       
-
+    <!-- The cursor uses the mouse instead of a fuse cursor. The "add-button-caller" component
+    is where all the scene logic starts. Start there when reading the javascript files.-->
     <a-scene cursor="rayOrigin: mouse" id="scene" add-button-caller>
 
         <a-assets>
+            <!-- images -->
             <img id="sutherland" src="assets/sutherland.png">
             <img id="damocles" src="assets/sword-of-damocles.png">
             <img id="gridSquare-white" src="assets/textures/gridSquare.png">
@@ -46,9 +50,7 @@
             <img id="solid" src="assets/2-platonic-solids.png">
             <img id="animal" src="assets/3-animal.png">
 
-            
-            
-
+            <!-- gltf models -->
             <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
             <a-asset-item id="arrow-red" src="assets/models/arrow-red.gltf"></a-asset-item>
             <a-asset-item id="arrow-blue" src="assets/models/arrow-green.gltf"></a-asset-item>
@@ -58,6 +60,7 @@
             <a-asset-item id="coin-green" src="assets/models/coin-green.gltf"></a-asset-item>
             <a-asset-item id="camcorder" src="assets/models/camcorder.gltf"></a-asset-item>
 
+            <!-- Spoken audio tracks -->
             <audio id = "created" src="assets/audio/speech-created.m4a" preload></audio>
             <audio id = "geometry" src="assets/audio/speech-geometry.m4a" preload></audio>
             <audio id = "manipulation" src="assets/audio/speech-manipulate.m4a" preload></audio>
@@ -69,19 +72,17 @@
             <audio id = "welcome" src="assets/audio/speech-welcome.m4a" preload></audio>
             <audio id = "done" src="assets/audio/speech-scenegraph.m4a" preload></audio>
             <audio id = "notyet" src="assets/audio/speech-notyet.m4a" preload></audio>
-
-
-            
           </a-assets>
 
+      <!-- The camera is embedded in another a-entity so that it can be moved by code -->
       <a-entity id = "camera"> 
         <a-camera></a-camera>
       </a-entity>
 
-
-
+      <!-- White background -->
       <a-sky color = "#ffffff"></a-sky>
       
+      <!-- Model of Jay starts off with an opacity of 0. All spoken tracks are applied to his sound component -->
       <a-gltf-model src="#JayBolter-gltf"
         id ="jayModel"
         model-opacity= "0"
@@ -92,16 +93,17 @@
         sound="src: #welcome; autoplay: false; refDistance: 10;">
       </a-gltf-model>
 
+      <!-- Plane representing the scene graph. Has a copy of Jay Bolter and the Camera model added by Default -->
       <a-plane id = "scene-graph" src="#nodeImg" height = "18" width = "32" position = "0 9.5 -18" visible="false">
           <a-gltf-model src="#JayBolter-gltf" id ="graph-jay" scale = "1.5 1.5 1.5" position="-13 2 0"></a-gltf-model>
           <a-gltf-model src="#camcorder" id ="graph-camcorder" scale = "1.5 1.5 1.5" position="-9.5 4 0" rotation = "0 -90 0"></a-gltf-model> 
       </a-plane>
 
+      <!-- The camera model sits at the user camera position, and is invisible by default -->
       <a-gltf-model src="#camcorder" id ="scene-camcorder" scale = "0.5 0.5 0.5" position="0.14 1.26 0" model-opacity= "0" visible ="false"></a-gltf-model>
 
+      <!-- The floor is a 40x40 grid of a-planes -->
       <a-entity id="floor" class = "button" gridify-plane = "height: 1; width:1; rows:40; columns:40; src: #gridSquare-white;" rotation = "-90 0 0" position = "0 -1 0"></a-entity>
-
-
 
     </a-scene>
     

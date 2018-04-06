@@ -1,3 +1,11 @@
+/* This .js file contains the three components that are added to the scale handles by the
+"playScale" function in the "manipulation-button-caller" component. They are functionally 
+identicle to the componets in "rotate-on-drag.js", except that a) They manipulate
+scale instead of rotation, b) These handles move with the mouse when dragged, and c) the y-axis
+manipulator also adjusts the objects position such that it appears to scale only in one direction
+(so that it doesn't scale through the floor.) For comments on how these components work, please see
+"rotate-on-drag.js" */  
+
 AFRAME.registerComponent('drag-scale-x',{
   schema : { 
     speed : {type: 'number',default:10},
