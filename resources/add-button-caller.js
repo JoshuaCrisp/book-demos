@@ -36,14 +36,14 @@ AFRAME.registerComponent('add-button-caller', {
 
             /* If the global variable "tutWelcome" is set to "true", then the welcome
             audio has not been played yet. Therefore the site has just loaded.
-            Set the text to say "start", and add the start component to the button
+            Set the text to say "start", and add the "start" component to the button
             with the default schema values*/
 
             if(tutWelcome){
                 btnText.setAttribute('value','click to start');
                 addBtn.setAttribute('start', {});
 
-            /* If the global variable "tutWelcome" is set to "false", the the welcome audio
+            /* If the global variable "tutWelcome" is set to "false", then the welcome audio
             has been played. Therefore, this is where the user is beginning to create
             his or her first mesh. Set the text to say "click to add object", and add
             the "geometry-button-caller" component to the button with the default

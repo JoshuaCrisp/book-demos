@@ -22,6 +22,7 @@
     <script src ="resources/rotate-on-drag.js"></script>
     <script src ="resources/audio-cue.js"></script>
     <script src ="resources/done-button.js"></script>
+    <script src ="resources/follow-target.js"></script>
 
     <!-- This file contains the global variables referenced throughout many of the other .js files -->
     <script src ="resources/scene-tracker.js"></script>
@@ -51,7 +52,7 @@
             <img id="animal" src="assets/3-animal.png">
 
             <!-- gltf models -->
-            <a-asset-item id="JayBolter-gltf" src="assets/models/JayBolter.gltf"></a-asset-item>
+            <a-asset-item id="JayBolter-gltf" src="assets/models/blairAnimated.gltf"></a-asset-item>
             <a-asset-item id="arrow-red" src="assets/models/arrow-red.gltf"></a-asset-item>
             <a-asset-item id="arrow-blue" src="assets/models/arrow-green.gltf"></a-asset-item>
             <a-asset-item id="arrow-green" src="assets/models/arrow-blue.gltf"></a-asset-item>
@@ -67,7 +68,7 @@
             <audio id = "material" src="assets/audio/speech-material.m4a" preload></audio>
             <audio id = "placement-xz" src="assets/audio/speech-placement-xz.m4a" preload></audio>
             <audio id = "placement-y" src="assets/audio/speech-placement-y.m4a" preload></audio>
-            <audio id = "rotation" src="assets/audio/speech-rotation.m4a" preload></audio>
+            <audio id = "rotation" src="assets/audio/speech-rotate.m4a" preload></audio>
             <audio id = "scale" src="assets/audio/speech-scale.m4a" preload></audio>
             <audio id = "welcome" src="assets/audio/speech-welcome.m4a" preload></audio>
             <audio id = "done" src="assets/audio/speech-scenegraph.m4a" preload></audio>
@@ -76,7 +77,7 @@
 
       <!-- The camera is embedded in another a-entity so that it can be moved by code -->
       <a-entity id = "camera"> 
-        <a-camera></a-camera>
+        <a-camera look-controls></a-camera>
       </a-entity>
 
       <!-- White background -->
@@ -86,7 +87,7 @@
       <a-gltf-model src="#JayBolter-gltf"
         id ="jayModel"
         model-opacity= "0"
-        scale = "1.5 1.5 1.5"
+        scale = "2.5 2.5 2.5"
         position="-6 -1 -16"
         rotation = "0 30 0"
         animation-mixer="clip: idle; crossFadeDuration:1;"

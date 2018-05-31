@@ -17,6 +17,8 @@ AFRAME.registerComponent('color-button-caller', {
 
         if(tutMaterial){
             tutMaterial = false;
+            var camera = document.querySelector('#camera');
+            camera.setAttribute('follow-target',{target:'#jayModel', speed: 10, active: true});
             var jay = document.querySelector('#jayModel');
             jay.setAttribute('sound','src: #material; autoplay: false;');
             jay.setAttribute('animation-mixer','clip: talking;');

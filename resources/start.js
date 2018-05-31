@@ -1,6 +1,6 @@
 /*This component is added to the add button by the "add-button-caller"
 component when the site first loads. It makes jay fade up, and adds the
-window listenrs that keep track of the mouse x and y positions*/
+window listeners that keep track of the mouse x and y positions*/
 
 AFRAME.registerComponent('start', {
     schema: {},
@@ -19,6 +19,8 @@ AFRAME.registerComponent('start', {
 
         function callJay(){
             var jay = document.querySelector('#jayModel');
+            var camera = document.querySelector('#camera');
+            camera.setAttribute('follow-target',{target:'#jayModel', speed: 10, active: true});
             jay.setAttribute('jay-caller',{});
             this.removeEventListener('click', callJay);
         }
@@ -30,6 +32,8 @@ AFRAME.registerComponent('start', {
             currentXpos = event.clientX;
             currentYpos = event.clientY; 
         }
+
+        
 
     }
    

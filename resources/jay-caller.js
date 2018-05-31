@@ -14,6 +14,8 @@ AFRAME.registerComponent('jay-caller', {
         // Function to return  Jay model to neutral pose
 
         var stopTalking =function(){
+            var camera = document.querySelector('#camera');
+            camera.removeAttribute('follow-target');
             this.setAttribute('animation-mixer','clip: idle;');
         }
 

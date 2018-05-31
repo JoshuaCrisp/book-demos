@@ -19,6 +19,8 @@ AFRAME.registerComponent('done-button', {
 
         jay.setAttribute('sound','src: #done; autoplay: false;');
         jay.components.sound.playSound();
+        var camera = document.querySelector('#camera');
+        camera.setAttribute('follow-target',{target:'#jayModel', speed: 10, active: true});
 
         
         // Function to make the scene graph visible

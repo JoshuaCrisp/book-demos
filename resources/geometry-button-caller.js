@@ -24,6 +24,8 @@ AFRAME.registerComponent('geometry-button-caller', {
                 jay.setAttribute('sound',"src: #geometry; autoplay: false;");
                 jay.setAttribute('animation-mixer','clip: talking;');
                 jay.components.sound.playSound();
+                var camera = document.querySelector('#camera');
+                camera.setAttribute('follow-target',{target:'#jayModel', speed: 10, active: true});
             }
             
             // Remove the listener for this function as soon as it is called.

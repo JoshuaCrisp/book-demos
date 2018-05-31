@@ -32,6 +32,8 @@ AFRAME.registerComponent('manipulation-button-caller', {
             tutManipulate = false;
             jay.setAttribute('sound','src: #manipulation; autoplay: false;');
             jay.components.sound.playSound();
+            var camera = document.querySelector('#camera');
+            camera.setAttribute('follow-target',{target:'#jayModel', speed: 10, active: true});
         }
        
         //Function to handle what happens when the user clicks the rotation button
@@ -171,6 +173,8 @@ AFRAME.registerComponent('manipulation-button-caller', {
             they hit done */
 
             if(containerPos.x == 0 && containerPos.y == -0.5 && containerPos.z == -3){
+                var camera = document.querySelector('#camera');
+                camera.setAttribute('follow-target',{target:'#jayModel', speed: 10, active: true});
                 jay.setAttribute('sound','src: #notyet; autoplay: false;');
                 jay.components.sound.playSound();
 

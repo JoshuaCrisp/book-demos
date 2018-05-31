@@ -13,37 +13,36 @@ AFRAME.registerComponent('audio-cue',{
 
 
         setTimeout(startWalking, 2000);
-        setTimeout(idle, 17000);
-        setTimeout(pointing, 23000);
-        setTimeout(callImage, 24500);
-        setTimeout(fadeIn, 24500);
-        setTimeout(idle, 27000);
+        setTimeout(idle, 15000);
+        setTimeout(pointing, 20000);
+        setTimeout(callImage, 21500);
+        setTimeout(fadeIn, 21500);
+        setTimeout(idle, 24000);
         setTimeout(talking2, 29000);
         setTimeout(idle, 34000);
-        setTimeout(pointing, 37500);
-        setTimeout(damoclesImage, 39000);
-        setTimeout(idle, 40000);
-        setTimeout(talking, 43000);
-        setTimeout(idle, 48000);
-        setTimeout(fadeOut, 53000);
-        setTimeout(triangleImage, 65000);
-        setTimeout(fadeIn, 65000);
-        setTimeout(pointing, 65000);
-        setTimeout(idle, 70000)
-        setTimeout(platoImage, 73000);
-        setTimeout(talking2, 75000);
-        setTimeout(idle, 80000);
-        setTimeout(solidImage, 76000);
+        setTimeout(pointing, 34000);
+        setTimeout(damoclesImage, 35500);
+        setTimeout(idle, 36500);
+        setTimeout(talking, 39500);
+        setTimeout(idle, 44000);
+        setTimeout(fadeOut, 48000);
+        setTimeout(triangleImage, 55000);
+        setTimeout(fadeIn, 59000);
+        setTimeout(pointing, 58000);
+        setTimeout(idle, 62000)
+        setTimeout(platoImage, 66500);
+        setTimeout(talking2, 68000);
+        setTimeout(idle, 73000);
+        setTimeout(solidImage, 70000);
         setTimeout(talking, 83000);
         setTimeout(fadeOut, 86000);
         setTimeout(idle, 88000);
         setTimeout(animalImage, 90000);
         setTimeout(fadeIn, 90000);
-        setTimeout(talking, 100000);
-        setTimeout(fadeOut, 103000);
-        setTimeout(removeImage, 103000);
-        setTimeout(talking2, 104000);
-        setTimeout(idle, 110000);
+        setTimeout(talking, 920000);
+        setTimeout(fadeOut, 94000);
+        setTimeout(removeImage, 95000);
+        setTimeout(idle, 950000);
 
         /* These functions  change the animation-mixer clip to a differnet
         animation. Making simple functions for them makes it easy to call them
@@ -74,7 +73,7 @@ AFRAME.registerComponent('audio-cue',{
         function startWalking(){
             var walkObject= document.createElement('a-animation');
             walkObject.setAttribute('attribute','position');
-            walkObject.setAttribute('dur','15000');
+            walkObject.setAttribute('dur','13000');
             walkObject.setAttribute('easing','linear');
             walkObject.setAttribute('from','-6 -1 -16');
             walkObject.setAttribute('to','-2 -1 -4');
@@ -117,7 +116,8 @@ AFRAME.registerComponent('audio-cue',{
             image.setAttribute('width', '6');
             image.setAttribute('src', '#sutherland');
             image.setAttribute('position', '2 2 -5');
-            scene.appendChild(image);     
+            scene.appendChild(image); 
+            
         }
 
         //Functions to handle changing the image src for the image plane
